@@ -1,0 +1,582 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="pt" lang="pt">
+    <head>
+        <title>Búzios Táxi
+    
+</title>
+        <link rel="search" href="/media/opensearch.xml" type="application/opensearchdescription+xml" title="Busca Búzios Táxi" />
+        <link rel="shortcut icon" href="/media/style/images/favicon.ico">
+        <meta name="description" content="Búzios Táxi - Precisando de táxi, transfer ou city tour? Encontre um carro ao seu gosto agora mesmo.">
+        <meta name="keywords" content="Búzios, táxi, taxista, catálogo, transporte, transfer, City Tour, passeio">
+        <meta property="fb:app_id" content="462273910606583" />
+        
+        
+            <link rel="stylesheet" href="/media/style/original/css/style.css" type="text/css" />
+        
+
+        
+        
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+        
+
+        <script src="/media/style/js/jquery.qtip-1.0.0-rc3.min.js" type="text/javascript"></script>
+        <script src="/media/style/js/aw_ini.js" type="text/javascript"></script>
+        <script src="/media/style/js/jquery.autocomplete.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+
+            function carregarMensagens() {
+                $("#mensagens").load('/carregarMensagensAviso/', function(response, status, xhr) {
+                    if (status == "error") {
+                        $(this).html("Erro ao carregar suas mensagens.");
+                    }
+                    exibirMensagem();
+                });
+            }
+            function exibirMensagem() {
+                var $alert = $('#mensagens');
+                if($('#mensagens > ul > li').length)
+                {
+                    var alerttimer = window.setTimeout(function () {
+                        $alert.trigger('click');
+                    }, 4500);
+                    $alert.animate({height: $alert.css('line-height') || '80px'}, 250)
+                    .click(function () {
+                        window.clearTimeout(alerttimer);
+                        $alert.animate({height: '0'}, 250);
+                        window.setTimeout()
+                    });
+                }
+            }
+            $(document).ready(function() {
+                $("body").css({"background-color": "#1F354A"});
+                $('.icones-funcoes li').qtip({
+                    position: {corner: {target: 'topMiddle', tooltip: 'bottomMiddle'}, adjust: {y: -4}},
+                    show: { effect: { length: 20 } },
+                    hide: { effect: { length: 100 } },
+                    style: 'padrao'
+                });
+
+                $(".campo-pesquisa").autocomplete("/autocomplete/", {
+                    width: 254,
+                    max: 6,
+                    minChars:1,
+                    scroll: false,
+                    selectFirst: false,
+                    //scrollHeight: 300,
+                    formatItem: function(data, i, n, value) { // formatar o dado vindo do servidor para ser exibido
+                        return value.split('#')[0]
+                    },
+		            formatResult: function(data, value) { // o que aparece dp do clique
+            			return value.split("#")[1];
+		            }
+                }).result(function(event, item) { // para onde ele vai quando clica
+                    location.href = item[0].split('#')[1];
+                });
+
+                exibirMensagem();
+            });
+            //estilo padrao ToolTip
+            $.fn.qtip.styles.padrao = {
+                paddingTop: 0,
+                paddingRight: 5,
+                paddingBottom: 0,
+                paddingLeft: 5,
+                background: '#133047',
+                color: '#ffffff',
+                textAlign: 'center',
+                fontSize: '0.7em',
+                border: {width: 0, radius: 3, color: '#133047'},
+                tip: {corner: 'bottomMiddle', size: {x:8,y:3}}
+            }
+
+        </script>
+
+        
+
+<script src="/media/style/js/jquery.carouFredSel-2.4.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+         
+        //Carrossel Display
+        $("#display-principal .itens").carouFredSel({
+            items: 1,
+            scroll: {
+                pauseOnHover: true
+            },
+            auto: 6000,
+            pagination: {
+                container: "#display-principal .paginacao-simples",
+                keys: true,
+                anchorBuilder: function( nr ) {
+                    return '<a class="icone item-paginacao-point" href="#'+nr+'"></a>';
+                }
+            }
+        });
+        
+
+        //Carrossel Destaques
+        $('#carrossel .itens').carouFredSel({
+            items: 3,
+            next : {
+                button		: $('#destaque .proximo'),
+                key			: 'right'
+            },
+            prev : {
+                button		: $('#destaque .anterior'),
+                key			: 'left'
+            },
+            scroll : {
+                items:  1,
+                duration: 250,
+                pauseOnHover	: true
+            },
+            auto: 4000
+        });
+    });
+    
+</script>
+
+
+        
+        
+         <!--[if IE]>
+                <script src="/media/style/js/jquery.adeus.ie6.min.js" type="text/javascript"></script>
+                <link type="text/css" href="/media/style/original/css/style_ie.css" rel="stylesheet"/>
+                <script src="/media/style/original/js/jquery.corner.js" type="text/javascript"></script>
+                <script src="/media/style/js/aw_ini_ie.js" type="text/javascript"></script>
+				
+			<script type="text/javascript">
+                    $(document).ready(function(){
+                        $("#idioma > input[type='image']").click(function(){
+                            $('<input />').attr('type', 'hidden')
+                                .attr('name', 'language')
+                                .attr('value', $(this).attr('value'))
+                                .appendTo('#idioma');
+                            return true;
+                        });
+                    });
+                </script>	
+				
+            <![endif]-->
+        
+    </head>
+    <body id="home">
+        <div id="pagina">
+			<div id="cabecalho">
+				<div id="cabecalho-interno">
+					<div id="logotipo">
+						<h1>
+							<a href="/?modo=logo" title="Ir para página inicial"><img src="/media/style/images/logotipo.png" alt="Búzios Táxi" title="Ir para página inicial" /></a>
+							<img style="display: none;" src="/media/style/images/avatar_logo.jpg" alt="Búzios Táxi" title="Búzios Táxi" />
+						</h1>
+					</div>
+					<ul id="menu-principal">
+						<li><a href="/taxistas/?modo=superior">Taxistas</a></li>
+						<li><a href="/pontos/?modo=superior">Pontos de Táxi</a></li>
+                        
+                        
+						<li><a href="/tarifario/?modo=superior">Tarifário</a></li>
+                        <li><a href="/agenda/?modo=superior">Translado Econômico</a></li>
+                        <li><a href="/apoio/?modo=superior">Apoios</a></li>
+                        <li><a href="/blog/?modo=superior">Blog</a></li>
+					</ul>
+                    <div id="migalha">
+                        
+                    </div>
+                    <div id="idiomas">
+                        
+                        <form action="/i18n/setlang/" method="post">
+                            
+                            <input name="next" type="hidden" value="/" />
+                            
+                            
+                                <input type="image" name="language" src="/media/style/images/bandeiras/us.gif" value="en" title="English" />
+                            
+                            
+                                <input type="image" name="language" src="/media/style/images/bandeiras/ar.gif" value="es" title="Español" />
+                            
+                        </form>
+                        
+                    </div>
+					<div id="form-pesquisa">
+						<form id="form-pesquisa-interno" action="/pesquisa/">
+							<input type="text" name="q" title="Pesquisar taxista" class="campo-pesquisa" value="" autocomplete="off" />
+							<input type="submit" class="bt-submit-pesquisa icone i-lupa" title="Pesquisar" value="Pesquisar"/>
+                        </form>
+                        <script type="text/javascript">
+                            $("#form-pesquisa-interno .campo-pesquisa").defaultvalue("Pesquisar taxista");
+                        </script>
+					</div>
+				</div>
+			</div>
+			<div id="corpo">
+				<div id="corpo-interno">
+					
+    <div id="principal" class="duas-colunas">
+        <div id="recipiente">
+            <div id="conteudo">
+                <div id="display-principal" class="modulo">
+                    <div class="moldura-display">
+                        <ul class="itens">
+                        
+                            <li>
+                                <a href="https://www.buziostaxi.com.br/">
+                                    <div class="info-display esquerda-display claro-display">
+                                        <h3>Búzios Cooper Taxi</h3><p>Cooperativa de Taxistas de Búzios</p>
+                                    </div>
+                                    <img src="/media/destaque/e09060fe-08f2-408e-a2bc-6fab7778959b.jpg.676x300_q85_crop-smart.jpg" title="Búzios Cooper TaxiCooperativa de Taxistas de Búzios" />
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.buziostaxi.com.br/">
+                                    <div class="info-display esquerda-display claro-display">
+                                        <h3>Melhores Carros</h3><p>Segurança e conforto para sua família.</p>
+                                    </div>
+                                    <img src="/media/destaque/display.jpg.676x300_q85_crop-smart.jpg" title="Melhores CarrosSegurança e conforto para sua família." />
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.buziostaxi.com.br/taxistas/?servico=2|Transfer&amp;modo=display">
+                                    <div class="info-display esquerda-display claro-display">
+                                        <h3>Transfers</h3><p>Faça viagens com segurança e conforto.</p>
+                                    </div>
+                                    <img src="/media/destaque/transfer.jpg.676x300_q85_crop-smart.jpg" title="TransfersFaça viagens com segurança e conforto." />
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.buziostaxi.com.br/taxistas/?servico=3|CityTour?modo=display">
+                                    <div class="info-display esquerda-display claro-display">
+                                        <h3>City-Tour</h3><p>Conheça os principais pontos turísticos da cidade</p>
+                                    </div>
+                                    <img src="/media/destaque/city-tour.jpg.676x300_q85_crop-smart.jpg" title="City-TourConheça os principais pontos turísticos da cidade" />
+                                </a>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    
+                        <div class="paginacao-simples"></div>
+                    
+                </div>
+                <div class="coluna col-dois-terco">
+                    <div class="modulo" id="blog">
+                        <div class="topo">
+                            <h3 class="titulo"><a href="/blog/" title="Ir para o Blog">Blog</a></h3>
+                        </div>
+                        
+                        
+                            <div class="item-vertical ">
+                                
+                                <div class="moldura-miniatura">
+                                    <a href="/blog/2017/02/21/rip-curl-grom-search2017/?modo=home" class="miniatura-m miniatura-fixa">
+                                        <img src="/media/blog/thumb/untitled_8z16qMN.png.80x80_q85_crop-smart.png"  width="80" height="80" alt="Praia de Geribá recebeu Rip Curl Grom Search 2017">
+                                    </a>
+                                </div>
+                                
+                                <h4><a href="/blog/2017/02/21/rip-curl-grom-search2017/">Praia de Geribá recebeu Rip Curl Grom Search 2017</a></h4>
+                                <p>No último final de semana, dias 11 e 12, com o apoio da Prefeitura de Búzios, aconteceu a segunda etapa do Rip Curl Grom Search ...</p>
+                            </div>
+                        
+                            <div class="item-vertical ">
+                                
+                                <div class="moldura-miniatura">
+                                    <a href="/blog/2016/12/06/buzios-recebe-desafio-solar/?modo=home" class="miniatura-m miniatura-fixa">
+                                        <img src="/media/blog/thumb/RTEmagicC_Desafio-Solar-barcos-eletricos.jpg.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="Búzios recebe provas com barcos movidos a energia solar">
+                                    </a>
+                                </div>
+                                
+                                <h4><a href="/blog/2016/12/06/buzios-recebe-desafio-solar/">Búzios recebe provas com barcos movidos a energia solar</a></h4>
+                                <p>Armação dos Búzios, na Região dos Lagos, recebe as provas de barcos movidos a energia solar, a 9ª Edição do Desafio Solar Brasil, a partir ...</p>
+                            </div>
+                        
+                            <div class="item-vertical ultimo">
+                                
+                                <div class="moldura-miniatura">
+                                    <a href="/blog/2016/06/30/15-festival-gastronomico-de-buzios/?modo=home" class="miniatura-m miniatura-fixa">
+                                        <img src="/media/blog/thumb/Festival_2013.jpg.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="Festival Gastronômico de Búzios chega à sua 15ª edição">
+                                    </a>
+                                </div>
+                                
+                                <h4><a href="/blog/2016/06/30/15-festival-gastronomico-de-buzios/">Festival Gastronômico de Búzios chega à sua 15ª edição</a></h4>
+                                <p>O Festival Gastronômico de Búzios, evento que já faz parte do calendário oficial de Búzios, começou pequeno e, em sua 15ª edição — dias 1 ...</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                <div class="coluna col-um-terco ultimo">
+                    <div class="modulo" id="pontos">
+                        <div class="topo">
+                            <h3 class="titulo"><a href="/pontos/" title="Ir para página de pontos">Pontos de Táxi</a></h3>
+                        </div>
+                        
+                        <div class="item-vertical ultimo">
+                            <h4><a href="/ponto-buzioscoopertaxi/">Búzios Cooper Táxi</a></h4>
+                            <p>
+                                <small>2226232703 | 27 taxistas</small>
+                                <br />
+                                Em frente ao Mc Donald&#39;s
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div id="destaque" class="modulo">
+                    <div class="topo">
+                        <div class="paginacao-simples fl-r">
+                            
+                        </div>
+                        <h3 class="titulo"><a href="/taxistas/?modo=vertodos" title="Ver todos os taxistas cadastrados">Destaque</a></h3>
+                    </div>
+                    <div id="carrossel" class="conteudo-interno">
+                        <ul class="itens">
+                            
+                            <li class="item">
+                                <div class="moldura-miniatura">
+                                    <a href="/dilan/?modo=destaque" class="miniatura-m miniatura-fixa">
+                                        <img src="/media/taxistaperfil/dilan.jpg.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="Dilan Silva Pereira">
+                                    </a>
+                                </div>
+                                <div class="informacao">
+                                    <p class="sub-info"><a href="/dilan/?modo=destaque" title="Dilan Silva Pereira" class="nome"><b>Dilan</b></a></p>
+                                    <p class="sub-info">@dilantaxi</p>
+                                    <p class="sub-info"><small>Livina - X-Gear SL</small></p>
+                                </div>
+                            </li>
+                            
+                            <li class="item">
+                                <div class="moldura-miniatura">
+                                    <a href="/bruno/?modo=destaque" class="miniatura-m miniatura-fixa">
+                                        <img src="/media/taxistaperfil/perfil.jpg.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="Carlos Bruno Carvalho Moreira">
+                                    </a>
+                                </div>
+                                <div class="informacao">
+                                    <p class="sub-info"><a href="/bruno/?modo=destaque" title="Carlos Bruno Carvalho Moreira" class="nome"><b>Bruno</b></a></p>
+                                    <p class="sub-info">(22) 99832-2686</p>
+                                    <p class="sub-info"><small>Logan - Dynamique 1.6</small></p>
+                                </div>
+                            </li>
+                            
+                            <li class="item">
+                                <div class="moldura-miniatura">
+                                    <a href="/celestino/?modo=destaque" class="miniatura-m miniatura-fixa">
+                                        <img src="/media/taxistaperfil/celestino.JPG.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="Celestino Bertti">
+                                    </a>
+                                </div>
+                                <div class="informacao">
+                                    <p class="sub-info"><a href="/celestino/?modo=destaque" title="Celestino Bertti" class="nome"><b>Celestino</b></a></p>
+                                    <p class="sub-info">(22) 99252-4443</p>
+                                    <p class="sub-info"><small>Meriva - Premium</small></p>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="conteudo-secundario" class=" estilo-padrao-laterais ">
+            
+            <div class="modulo">
+                <h3 class="titulo fixo">
+                    <a href="https://www.facebook.com/buziostaxi" target="_blank">Facebook</a>
+                    <span class="icone i-seta-direita"></span>
+                </h3>
+                <div class="fb-page" data-href="https://www.facebook.com/buziostaxi" data-width="280" data-hide-cover="false" data-show-facepile="true" data-show-posts="false">
+                    <div class="fb-xfbml-parse-ignore">
+                        <blockquote cite="https://www.facebook.com/buziostaxi">
+                            <a href="https://www.facebook.com/buziostaxi">
+                                Búzios Táxi
+                            </a>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div  class="modulo">
+                <h3 class="titulo fixo">
+                    <a href="http://twitter.com/buziostaxi/" target="_blank">Twitter</a>
+                    <span class="icone i-seta-direita"></span>
+                </h3>
+                <a class="twitter-timeline" href="https://twitter.com/buziostaxi" width="280" height="290" data-widget-id="591815753420165120">Tweets de @buziostaxi</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+        </div>
+    </div>
+
+					<div class="clear"></div>
+				</div>
+            </div>
+			<div id="rodape">
+                <div class="diretorio">
+                    <div id="rodape-interno">
+                        <div class="coluna col-um-setimo ultimo-linha">
+                            <ul class="menu-rodape ">
+                                <h3><a href="/?modo=diretorio">Búzios Táxi</a></h3>
+                                
+                                
+                                    
+                                        <li ><a href="/info/cadastre-seu-taxi/?modo=diretorio">Cadastre seu Taxi</a></li>
+                                    
+                                        <li ><a href="/info/anuncie-aqui/?modo=diretorio">Anuncie Aqui</a></li>
+                                    
+                                        <li ><a href="/info/sugestoes/?modo=diretorio">Sugestões</a></li>
+                                    
+                                        <li class="ultimo-linha"><a href="/info/servicos/?modo=diretorio">Serviços</a></li>
+                                    
+                            </ul>
+                            <ul class="menu-rodape ultimo-linha ultimo-linha">
+                                <h3><a href="/pontos/?modo=diretorio">Pontos</a></h3>
+                                
+                                    <li >
+                                        <a href="/ponto-buzioscoopertaxi/?modo=diretorio">Búzios Cooper Táxi</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-geriba/?modo=diretorio">Geribá</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-Hospital/?modo=diretorio">Hospital</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-praca/?modo=diretorio">Praça</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-rodoviaria/?modo=diretorio">Rodoviária</a>
+                                    </li>
+                                
+                            </ul>
+                        </div>
+                        <ul class="menu-rodape coluna col-um-setimo ultimo-linha">
+                            <h3><a href="/taxistas/?modo=diretorio">Taxistas</a></h3>
+                            
+                                <li >
+                                    <a href="/bruno/?modo=diretorio" title="Carlos Bruno Carvalho Moreira">Bruno</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                                <li >
+                                    <a href="/celestino/?modo=diretorio" title="Celestino Bertti">Celestino</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                                <li >
+                                    <a href="/dilan/?modo=diretorio" title="Dilan Silva Pereira">Dilan</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                        </ul>
+                        <div id="apoio-rodape" class="menu-rodape coluna col-tres-setimo ultimo-linha ultimo">
+                            
+                            <h3><a href="/apoio/?modo=diretorio">Apoio</a></h3>
+                            
+                            <img src="/media/style/images/apoio/logo_astab.png">
+
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="credito">
+                    <div class="separador-horizontal"></div>
+                    <div id="aw-logo">
+                        <span class="direitos">Búzios Táxi - Todos os direitos reservados</span>
+                        <br />
+                        <a href="http://www.amazingworks.com.br" target="_blank" title="Desenvolvido por AmazingWorks">
+                            <img src="/media/style/images/aw_logo.png" alt="AmazingWorks" />
+                        </a>
+                    </div>
+                </div>
+			</div>
+		</div>
+
+        <div id="mensagens"></div>
+
+		<!-- sugestões -->
+		<script type="text/javascript">
+			var uservoiceOptions = {
+			  /* required */
+			  key: 'buziostaxi',
+			  host: 'buziostaxi.uservoice.com',
+			  forum: '50787',
+			  showTab: true,
+			  /* optional */
+			  alignment: 'left',
+			  background_color:'#455a6b',
+			  text_color: 'white',
+			  hover_color: '#697e8f',
+			  lang: 'pt_BR'
+			};
+
+			function _loadUserVoice() {
+			  var s = document.createElement('script');
+			  s.setAttribute('type', 'text/javascript');
+			  s.setAttribute('src', ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js");
+			  document.getElementsByTagName('head')[0].appendChild(s);
+			}
+			_loadSuper = window.onload;
+			window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
+		</script>
+		<!-- fim sugestões -->
+		<!-- analitycs -->
+		    <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-17199816-1']);
+                _gaq.push(['_trackPageview']);
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+           </script>
+        <!-- fim analitycs -->
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            var $_Tawk_API={},$_Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/555d55e519120cff184faf01/default';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
+        <!--End of Tawk.to Script-->
+
+        <div id="fb-root"></div>
+        <script type="application/javascript">
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '462273910606583',
+                    xfbml      : true,
+                    version    : 'v2.3'
+                });
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+    </body>
+</html>

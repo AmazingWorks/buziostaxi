@@ -1,0 +1,1030 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="pt" lang="pt">
+    <head>
+        <title>Búzios Táxi - Tarifário</title>
+        <link rel="search" href="/media/opensearch.xml" type="application/opensearchdescription+xml" title="Busca Búzios Táxi" />
+        <link rel="shortcut icon" href="/media/style/images/favicon.ico">
+        <meta name="description" content="Búzios Táxi - Precisando de táxi, transfer ou city tour? Encontre um carro ao seu gosto agora mesmo.">
+        <meta name="keywords" content="Búzios, táxi, taxista, catálogo, transporte, transfer, City Tour, passeio">
+        <meta property="fb:app_id" content="462273910606583" />
+        
+        
+            <link rel="stylesheet" href="/media/style/original/css/style.css" type="text/css" />
+        
+
+        
+        
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+        
+    
+        <script src="/media/style/js/jquery.qtip-1.0.0-rc3.min.js" type="text/javascript"></script>
+        <script src="/media/style/js/aw_ini.js" type="text/javascript"></script>
+        <script src="/media/style/js/jquery.autocomplete.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+
+            function carregarMensagens() {
+                $("#mensagens").load('/carregarMensagensAviso/', function(response, status, xhr) {
+                    if (status == "error") {
+                        $(this).html("Erro ao carregar suas mensagens.");
+                    }
+                    exibirMensagem();
+                });
+            }
+            function exibirMensagem() {
+                var $alert = $('#mensagens');
+                if($('#mensagens > ul > li').length)
+                {
+                    var alerttimer = window.setTimeout(function () {
+                        $alert.trigger('click');
+                    }, 4500);
+                    $alert.animate({height: $alert.css('line-height') || '80px'}, 250)
+                    .click(function () {
+                        window.clearTimeout(alerttimer);
+                        $alert.animate({height: '0'}, 250);
+                        window.setTimeout()
+                    });
+                }
+            }
+            $(document).ready(function() {
+                $("body").css({"background-color": "#1F354A"});
+                $('.icones-funcoes li').qtip({
+                    position: {corner: {target: 'topMiddle', tooltip: 'bottomMiddle'}, adjust: {y: -4}},
+                    show: { effect: { length: 20 } },
+                    hide: { effect: { length: 100 } },
+                    style: 'padrao'
+                });
+
+                $(".campo-pesquisa").autocomplete("/autocomplete/", {
+                    width: 254,
+                    max: 6,
+                    minChars:1,
+                    scroll: false,
+                    selectFirst: false,
+                    //scrollHeight: 300,
+                    formatItem: function(data, i, n, value) { // formatar o dado vindo do servidor para ser exibido
+                        return value.split('#')[0]
+                    },
+		            formatResult: function(data, value) { // o que aparece dp do clique
+            			return value.split("#")[1];
+		            }
+                }).result(function(event, item) { // para onde ele vai quando clica
+                    location.href = item[0].split('#')[1];
+                });
+
+                exibirMensagem();
+            });
+            //estilo padrao ToolTip
+            $.fn.qtip.styles.padrao = {
+                paddingTop: 0,
+                paddingRight: 5,
+                paddingBottom: 0,
+                paddingLeft: 5,
+                background: '#133047',
+                color: '#ffffff',
+                textAlign: 'center',
+                fontSize: '0.7em',
+                border: {width: 0, radius: 3, color: '#133047'},
+                tip: {corner: 'bottomMiddle', size: {x:8,y:3}}
+            }
+
+        </script>
+
+        
+    <script src="/media/style/js/sorttable.js" type="text/javascript"></script>
+    <script src="/media/style/js/jquery.quicksearch.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#campo-refinar').quicksearch('table#tabela-tarifario tbody tr',{noResults: '#noresults'});
+        });
+    </script>
+
+        
+        
+         <!--[if IE]>
+                <script src="/media/style/js/jquery.adeus.ie6.min.js" type="text/javascript"></script>
+                <link type="text/css" href="/media/style/original/css/style_ie.css" rel="stylesheet"/>
+                <script src="/media/style/original/js/jquery.corner.js" type="text/javascript"></script>
+                <script src="/media/style/js/aw_ini_ie.js" type="text/javascript"></script>
+				
+			<script type="text/javascript">
+                    $(document).ready(function(){
+                        $("#idioma > input[type='image']").click(function(){
+                            $('<input />').attr('type', 'hidden')
+                                .attr('name', 'language')
+                                .attr('value', $(this).attr('value'))
+                                .appendTo('#idioma');
+                            return true;
+                        });
+                    });
+                </script>	
+				
+            <![endif]-->
+        
+    </head>
+    <body id="tarifario">
+        <div id="pagina">
+			<div id="cabecalho">
+				<div id="cabecalho-interno">
+					<div id="logotipo">
+						<h1>
+							<a href="/?modo=logo" title="Ir para página inicial"><img src="/media/style/images/logotipo.png" alt="Búzios Táxi" title="Ir para página inicial" /></a>
+							<img style="display: none;" src="/media/style/images/avatar_logo.jpg" alt="Búzios Táxi" title="Búzios Táxi" />
+						</h1>
+					</div>
+					<ul id="menu-principal">
+						<li><a href="/taxistas/?modo=superior">Taxistas</a></li>
+						<li><a href="/pontos/?modo=superior">Pontos de Táxi</a></li>
+                        
+                        
+						<li><a href="/tarifario/?modo=superior">Tarifário</a></li>
+                        <li><a href="/agenda/?modo=superior">Translado Econômico</a></li>
+                        <li><a href="/apoio/?modo=superior">Apoios</a></li>
+                        <li><a href="/blog/?modo=superior">Blog</a></li>
+					</ul>
+                    <div id="migalha">
+                        
+    <a href="/">Início</a>
+    <span class="separador">»</span>
+    <span class="atual">Tarifário</span>
+
+                    </div>
+                    <div id="idiomas">
+                        
+                        <form action="/i18n/setlang/" method="post">
+                            
+                            <input name="next" type="hidden" value="/tarifario/" />
+                            
+                            
+                                <input type="image" name="language" src="/media/style/images/bandeiras/us.gif" value="en" title="English" />
+                            
+                            
+                                <input type="image" name="language" src="/media/style/images/bandeiras/ar.gif" value="es" title="Español" />
+                            
+                        </form>
+                        
+                    </div>
+					<div id="form-pesquisa">
+						<form id="form-pesquisa-interno" action="/pesquisa/">
+							<input type="text" name="q" title="Pesquisar taxista" class="campo-pesquisa" value="" autocomplete="off" />
+							<input type="submit" class="bt-submit-pesquisa icone i-lupa" title="Pesquisar" value="Pesquisar"/>
+                        </form>
+                        <script type="text/javascript">
+                            $("#form-pesquisa-interno .campo-pesquisa").defaultvalue("Pesquisar taxista");
+                        </script>
+					</div>
+				</div>
+			</div>
+			<div id="corpo">
+				<div id="corpo-interno">
+					
+    <div id="principal" class="duas-colunas">
+        <div id="recipiente">
+            
+    <div id="form-refinar">
+        <label for="campo-refinar" class="fonte-pequena">Informe seu destino</label>
+        <input type="text" title="Pesquisar taxista" id="campo-refinar" value="" />
+    </div>
+    <h2 class="titulo">Tarifário</h2>
+
+            <div id="conteudo" class="modulo ">
+                
+<table id="tabela-tarifario" class="sortable">
+    <colgroup>
+        <col id="origem">
+        <col id="destino">
+        <col id="valor">
+    </colgroup>
+    <thead>
+        <tr>
+            <th><span class="texto">Origem</span></th>
+            <th><span class="texto">Destino</span></th>
+            <th><span class="texto">Valor</span></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            <tr>
+                <td><span class="texto">Aeroporto Búzios</span><div class="linha"></div></td>
+                <td><span class="texto">Ferradura</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>54,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Hospital</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>30,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Ferradurinha</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>23,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Golf Club</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>40,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">José Golçalves</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>35,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Tucuns</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>35,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Banco Real</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>23,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Martim Pescador</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>22,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Kailua</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>15,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Geribá</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>25,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Marina Porto Búzios</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>35,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Aeroporto Búzios</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>48,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Bauem - Caravelas</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>48,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Maria Joaquina</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>48,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Pórtico</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>30,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Barbuda</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>18,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Fazendinha</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>54,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Rodoviária</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>15,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">João Fernandes</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>18,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Barbuda até Cilico</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>20,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Barracuda</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>24,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Torreli</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>22,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Manguinhos - Até Santa Rita</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>22,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Azeda</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>18,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Entrada da Tartaruga</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>20,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Morro do Humaitá</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>15,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Tangarás</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>40,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Alto de Búzios</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>20,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Ossos</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>18,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Brava</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>18,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Pousada Alamanda</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>25,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Unamar</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>50,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Rasa</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>35,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Cem Braças</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>25,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Forno</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>18,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Ferradura</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>18,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Tartaruga</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>15,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Centro</span><div class="linha"></div></td>
+                <td><span class="texto">Hotel Atlântico</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>18,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Ferradura</span><div class="linha"></div></td>
+                <td><span class="texto">Humaita</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>22,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Ferradura</span><div class="linha"></div></td>
+                <td><span class="texto">Ossos</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>25,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Ferradura</span><div class="linha"></div></td>
+                <td><span class="texto">Tartaruga</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>30,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Ferradura</span><div class="linha"></div></td>
+                <td><span class="texto">Porto da Barra</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>28,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Geribá</span><div class="linha"></div></td>
+                <td><span class="texto">Ossos</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>30,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Geribá</span><div class="linha"></div></td>
+                <td><span class="texto">Ossos</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>30,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Geribá</span><div class="linha"></div></td>
+                <td><span class="texto">Azeda</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>30,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Geribá</span><div class="linha"></div></td>
+                <td><span class="texto">Brava</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>35,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Geribá</span><div class="linha"></div></td>
+                <td><span class="texto">Ferradura</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>30,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Geribá</span><div class="linha"></div></td>
+                <td><span class="texto">Forno</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>35,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Geribá</span><div class="linha"></div></td>
+                <td><span class="texto">Tartaruga</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>30,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Golf Club</span><div class="linha"></div></td>
+                <td><span class="texto">Ferradura</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>40,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Golf Club</span><div class="linha"></div></td>
+                <td><span class="texto">João Fernandes</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>45,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Humaita</span><div class="linha"></div></td>
+                <td><span class="texto">Forno</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>22,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Humaita</span><div class="linha"></div></td>
+                <td><span class="texto">Brava</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>22,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Humaita</span><div class="linha"></div></td>
+                <td><span class="texto">Ferradura</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>22,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">Humaita</span><div class="linha"></div></td>
+                <td><span class="texto">Porto da Barra</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>30,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">João Fernandes</span><div class="linha"></div></td>
+                <td><span class="texto">Porto da Barra</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>30,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">João Fernandes</span><div class="linha"></div></td>
+                <td><span class="texto">Aeroporto Búzios</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>54,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">João Fernandes</span><div class="linha"></div></td>
+                <td><span class="texto">Ferradura</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>26,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">João Fernandes</span><div class="linha"></div></td>
+                <td><span class="texto">Geribá</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>33,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">João Fernandes</span><div class="linha"></div></td>
+                <td><span class="texto">Hospital</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>40,00</td>
+            </tr>
+        
+            <tr>
+                <td><span class="texto">João Fernandes</span><div class="linha"></div></td>
+                <td><span class="texto">Tartaruga</span><div class="linha"></div></td>
+                <td><span class="texto">R$</span>30,00</td>
+            </tr>
+        
+        <tr id="noresults">
+		    <td>Nenhum resultado encontrado</td>
+		    <td></td>
+		    <td></td>
+        </tr>
+    </tbody>
+</table>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div id="conteudo-secundario" class=" estilo-padrao-laterais ">
+            
+                <div class="modulo-informacao modulo">
+                    <div class="modulo-informacao">
+                        <h3 class="titulo fixo">
+                            Siga-nos
+                            <span class="icone i-seta-direita"></span>
+                        </h3>
+                        <ul class="informacao link-social">
+    <li class="sub-item"><a href="http://www.twitter.com/buziostaxi" target="_blank"><span class="valor">Twitter</span><span class="icone twitter"></span></a></li>
+    <li class="sub-item"><a href="http://www.facebook.com/buziostaxi" target="_blank"><span class="valor">Facebook</span><span class="icone facebook"></span></a></li>
+</ul>
+                    </div>
+                </div>
+
+                <div class="modulo-informacao modulo modulo-publicidade">
+                    <h3 class="titulo fixo">
+                        Publicidade
+                        <span class="icone i-seta-direita"></span>
+                    </h3>
+                    <script type="text/javascript"><!--
+                        google_ad_client = "pub-8714499964522454";
+                        /* 160x600, criado 30/06/10 - Buziostaxi */
+                        google_ad_slot = "5811439004";
+                        google_ad_width = 160;
+                        google_ad_height = 600;
+                        //-->
+                    </script>
+                    <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+                </div>
+            
+        </div>
+    </div>
+
+					<div class="clear"></div>
+				</div>
+            </div>
+			<div id="rodape">
+                <div class="diretorio">
+                    <div id="rodape-interno">
+                        <div class="coluna col-um-setimo ultimo-linha">
+                            <ul class="menu-rodape ">
+                                <h3><a href="/?modo=diretorio">Búzios Táxi</a></h3>
+                                
+                                
+                                    
+                                        <li ><a href="/info/cadastre-seu-taxi/?modo=diretorio">Cadastre seu Taxi</a></li>
+                                    
+                                        <li ><a href="/info/anuncie-aqui/?modo=diretorio">Anuncie Aqui</a></li>
+                                    
+                                        <li ><a href="/info/sugestoes/?modo=diretorio">Sugestões</a></li>
+                                    
+                                        <li class="ultimo-linha"><a href="/info/servicos/?modo=diretorio">Serviços</a></li>
+                                    
+                            </ul>
+                            <ul class="menu-rodape ultimo-linha ultimo-linha">
+                                <h3><a href="/pontos/?modo=diretorio">Pontos</a></h3>
+                                
+                                    <li >
+                                        <a href="/ponto-buzioscoopertaxi/?modo=diretorio">Búzios Cooper Táxi</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-geriba/?modo=diretorio">Geribá</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-Hospital/?modo=diretorio">Hospital</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-praca/?modo=diretorio">Praça</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-rodoviaria/?modo=diretorio">Rodoviária</a>
+                                    </li>
+                                
+                            </ul>
+                        </div>
+                        <ul class="menu-rodape coluna col-um-setimo ultimo-linha">
+                            <h3><a href="/taxistas/?modo=diretorio">Taxistas</a></h3>
+                            
+                                <li >
+                                    <a href="/arthur/?modo=diretorio" title="Arthur da Silva Valles">Arthur</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/aurelio/?modo=diretorio" title="Aurélio dos Santos">Aurélio</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/beto/?modo=diretorio" title="Alberto Santos Silva">Beto</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/bruno/?modo=diretorio" title="Carlos Bruno Carvalho Moreira">Bruno</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/brunosantos/?modo=diretorio" title="Bruno de Jesus C. dos Santos">Bruno Santos</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/cadinho/?modo=diretorio" title="Claudenil da Costa Ramos">Cadinho</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/carlindo/?modo=diretorio" title="Carlindo Chaves de Souza">Carlindo</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/carlos/?modo=diretorio" title="Antônio Carlos Ferreira">Carlos</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/celestino/?modo=diretorio" title="Celestino Bertti">Celestino</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/deivison/?modo=diretorio" title="Deivison Moraes Valadão">Deivison</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/dico/?modo=diretorio" title="Valcemir Freire de Olivera">Dico</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/didi/?modo=diretorio" title="João Batista G. da Silva">Didi</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/dilan/?modo=diretorio" title="Dilan Silva Pereira">Dilan</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/eduardo/?modo=diretorio" title="Eduardo Pereira de Barros">Eduardo</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/fernando/?modo=diretorio" title="Fernando de Carvalho Marques">Fernando</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/franck/?modo=diretorio" title="Franck Ferreira Vital">Franck</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/guilherme/?modo=diretorio" title="Guilherme Campanario Rodriguês">Guilherme</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                                <li >
+                                    <a href="/henrique/?modo=diretorio" title="Claudio Henrique Rocha Armando">Henrique</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/humberto/?modo=diretorio" title="Humberto Antonio Pereira">Humberto</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/igor/?modo=diretorio" title="Igor Marques">Igor</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/jb/?modo=diretorio" title="João Batista Nascimento">JB</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/joaogomes/?modo=diretorio" title="João Carlos da Costa Gomes">João Gomes</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/joaoluiz/?modo=diretorio" title="João Luiz Antunes da Costa">João Luiz</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/jonas/?modo=diretorio" title="Jonas Siqueira de Alcantra Neto">Jonas</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/ze/?modo=diretorio" title="José Roberto Ramos Calisto">José Roberto</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/josue/?modo=diretorio" title="Josué de Souza Silveira">Josue</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/julio/?modo=diretorio" title="Júlio Cesar Freire de Mesquita">Júlio</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/juniornobre/?modo=diretorio" title="Junior da Conceição Carvalho">Junior Nobre</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/Luis/?modo=diretorio" title="Luis Antonio de Souza">Luis</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/luisotavio/?modo=diretorio" title="Luís Otávio Lopes Remedy">Luís Otávio</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/maicon/?modo=diretorio" title="Maicon Carvalho dos Santos">Maicon</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/marcelocardoso/?modo=diretorio" title="Marcelo Cardoso de Abreu">Marcelo Cardoso</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/marcelofarias/?modo=diretorio" title="Marcelo de Mendonça Farias">Marcelo Farias</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/matheus/?modo=diretorio" title="Matheus Magalhães Rangel">Matheus</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                                <li >
+                                    <a href="/mazinho/?modo=diretorio" title="Marzio de Carvalho Linhares">Mazinho</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/oliveira/?modo=diretorio" title="Ademilson Oliveira da Silva">Oliveira</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/paulo/?modo=diretorio" title="Paulo Cezar Da Matta">Paulo</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/rafael/?modo=diretorio" title="Rafael Matsumoto">Rafael</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/reinaldo/?modo=diretorio" title="Reinaldo de Matos Ferreira">Reinaldo</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/renato/?modo=diretorio" title="Renato Rocha Matos Junior">Renato</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/roberto/?modo=diretorio" title="José Roberto da Silva Farias">Roberto</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/robinho/?modo=diretorio" title="Robson Oliveira de Souza">Robinho</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/rogerio/?modo=diretorio" title="Rogério Ferrari N. Pereira">Rogério</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/rogerioschneider/?modo=diretorio" title="Rogério Schneider Carvalho Pinto">Rogério Schneider</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/samuel/?modo=diretorio" title="Samuel da Silva Valles">Samuel</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/totonho/?modo=diretorio" title="José Antônio Alegre da Silva">Totonho</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/valterluiz/?modo=diretorio" title="Valter Luiz de Souza">Valter Luiz</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/vicente/?modo=diretorio" title="Vicente Armando Berti">Vicente</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/vinicius/?modo=diretorio" title="Vinicius Marques P. Barros">Vinicius</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/waldilei/?modo=diretorio" title="Waldilei Ramos de Oliveira">Waldilei</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/zepedro/?modo=diretorio" title="José Pedro da Silva">Zé Pedro</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                        </ul>
+                        <div id="apoio-rodape" class="menu-rodape coluna col-tres-setimo ultimo-linha ultimo">
+                            
+                            <h3><a href="/apoio/?modo=diretorio">Apoio</a></h3>
+                            
+                            <img src="/media/style/images/apoio/logo_astab.png">
+
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="credito">
+                    <div class="separador-horizontal"></div>
+                    <div id="aw-logo">
+                        <span class="direitos">Búzios Táxi - Todos os direitos reservados</span>
+                        <br />
+                        <a href="http://www.amazingworks.com.br" target="_blank" title="Desenvolvido por AmazingWorks">
+                            <img src="/media/style/images/aw_logo.png" alt="AmazingWorks" />
+                        </a>
+                    </div>
+                </div>
+			</div>
+		</div>
+
+        <div id="mensagens"></div>
+
+		<!-- sugestões -->
+		<script type="text/javascript">
+			var uservoiceOptions = {
+			  /* required */
+			  key: 'buziostaxi',
+			  host: 'buziostaxi.uservoice.com',
+			  forum: '50787',
+			  showTab: true,
+			  /* optional */
+			  alignment: 'left',
+			  background_color:'#455a6b',
+			  text_color: 'white',
+			  hover_color: '#697e8f',
+			  lang: 'pt_BR'
+			};
+
+			function _loadUserVoice() {
+			  var s = document.createElement('script');
+			  s.setAttribute('type', 'text/javascript');
+			  s.setAttribute('src', ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js");
+			  document.getElementsByTagName('head')[0].appendChild(s);
+			}
+			_loadSuper = window.onload;
+			window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
+		</script>
+		<!-- fim sugestões -->
+		<!-- analitycs -->
+		    <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-17199816-1']);
+                _gaq.push(['_trackPageview']);
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+           </script>
+        <!-- fim analitycs -->
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            var $_Tawk_API={},$_Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/555d55e519120cff184faf01/default';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
+        <!--End of Tawk.to Script-->
+
+        <div id="fb-root"></div>
+        <script type="application/javascript">
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '462273910606583',
+                    xfbml      : true,
+                    version    : 'v2.3'
+                });
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+    </body>
+</html>

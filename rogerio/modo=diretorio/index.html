@@ -1,0 +1,1006 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="pt" lang="pt">
+    <head>
+        <title>Búzios Táxi - Rogério - Rogério Ferrari N. Pereira</title>
+        <link rel="search" href="/media/opensearch.xml" type="application/opensearchdescription+xml" title="Busca Búzios Táxi" />
+        <link rel="shortcut icon" href="/media/style/images/favicon.ico">
+        <meta name="description" content="Rogério Ferrari N. Pereira | Rogério | Meriva - Premium 2010/2011 | Táxi | Búzios Cooper Táxi">
+        <meta name="keywords" content="Búzios, táxi, taxista, catálogo, transporte, transfer, City Tour, passeio">
+        <meta property="fb:app_id" content="462273910606583" />
+        
+        
+    
+            <link rel="stylesheet" href="/media/style/original/css/style.css" type="text/css" />
+        
+	<link rel="stylesheet" type="text/css" href="/media/style/original/css/jquery.fancybox-1.3.1.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/media/style/original/css/validationEngine.jquery.css" />
+
+
+        
+        
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+        
+    
+    
+        <script src="/media/style/js/jquery.qtip-1.0.0-rc3.min.js" type="text/javascript"></script>
+        <script src="/media/style/js/aw_ini.js" type="text/javascript"></script>
+        <script src="/media/style/js/jquery.autocomplete.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+
+            function carregarMensagens() {
+                $("#mensagens").load('/carregarMensagensAviso/', function(response, status, xhr) {
+                    if (status == "error") {
+                        $(this).html("Erro ao carregar suas mensagens.");
+                    }
+                    exibirMensagem();
+                });
+            }
+            function exibirMensagem() {
+                var $alert = $('#mensagens');
+                if($('#mensagens > ul > li').length)
+                {
+                    var alerttimer = window.setTimeout(function () {
+                        $alert.trigger('click');
+                    }, 4500);
+                    $alert.animate({height: $alert.css('line-height') || '80px'}, 250)
+                    .click(function () {
+                        window.clearTimeout(alerttimer);
+                        $alert.animate({height: '0'}, 250);
+                        window.setTimeout()
+                    });
+                }
+            }
+            $(document).ready(function() {
+                $("body").css({"background-color": "#1F354A"});
+                $('.icones-funcoes li').qtip({
+                    position: {corner: {target: 'topMiddle', tooltip: 'bottomMiddle'}, adjust: {y: -4}},
+                    show: { effect: { length: 20 } },
+                    hide: { effect: { length: 100 } },
+                    style: 'padrao'
+                });
+
+                $(".campo-pesquisa").autocomplete("/autocomplete/", {
+                    width: 254,
+                    max: 6,
+                    minChars:1,
+                    scroll: false,
+                    selectFirst: false,
+                    //scrollHeight: 300,
+                    formatItem: function(data, i, n, value) { // formatar o dado vindo do servidor para ser exibido
+                        return value.split('#')[0]
+                    },
+		            formatResult: function(data, value) { // o que aparece dp do clique
+            			return value.split("#")[1];
+		            }
+                }).result(function(event, item) { // para onde ele vai quando clica
+                    location.href = item[0].split('#')[1];
+                });
+
+                exibirMensagem();
+            });
+            //estilo padrao ToolTip
+            $.fn.qtip.styles.padrao = {
+                paddingTop: 0,
+                paddingRight: 5,
+                paddingBottom: 0,
+                paddingLeft: 5,
+                background: '#133047',
+                color: '#ffffff',
+                textAlign: 'center',
+                fontSize: '0.7em',
+                border: {width: 0, radius: 3, color: '#133047'},
+                tip: {corner: 'bottomMiddle', size: {x:8,y:3}}
+            }
+
+        </script>
+
+        
+    <script type="text/javascript">
+    $(document).ready(function(){
+        divMovel = $('#barra-lateral');
+        distanciaInicial = divMovel.offset().top;
+        tamanhoInicial = divMovel.height();
+        fimMovimento = $("#rodape").offset().top;
+        $(window).scroll(function(){
+            if($(window).scrollTop() - distanciaInicial + 8 > 0) {
+                if($(window).scrollTop() + tamanhoInicial < fimMovimento) {
+                    divMovel.css("margin-top", $(window).scrollTop() - distanciaInicial + 8 + "px");
+                } else {
+                    divMovel.css("margin-top", fimMovimento - tamanhoInicial - distanciaInicial + "px");
+                }
+            } else {
+                divMovel.css("margin-top", "0px");
+            }
+        });
+    });
+    </script>
+
+
+    <script src="/media/style/js/aw.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/media/style/fancybox/jquery.fancybox-1.3.1.js"></script>
+    <script type="text/javascript" src="/media/style/js/jquery.form.js" ></script>
+    <script type="text/javascript" src="/media/style/js/jquery.validationEngine-pt.js" ></script>
+    <script type="text/javascript" src="/media/style/js/jquery.validationEngine.js" ></script>
+    <script type="text/javascript">
+
+        function habilitarBotaoSubmit(selector, habilitar) {
+            if(habilitar) {
+                $(selector).attr('value', 'Enviar');
+                $(selector).removeAttr('disabled');
+            } else {
+                $(selector).attr('value', 'Aguarde...');
+                $(selector).attr('disabled', 'true');
+            }
+        }
+
+        function finalizarContato(response, status,asd, form) {
+            carregarMensagens();
+            habilitarBotaoSubmit('#contatoEnviar', true);
+            if (response.status == 200 && response.responseText != 'erro')
+            {
+                $('#contatoForm').resetForm();
+                _gaq.push(['_trackEvent', 'Contato Taxista', 'Enviado']);
+            } else {
+                _gaq.push(['_trackEvent', 'Contato Taxista', 'Erro de envio']);
+            }
+        }
+
+        function preEnvio (formData, jqForm, options) {
+            habilitarBotaoSubmit(botao, false);
+            _gaq.push(['_trackEvent', 'Contato Taxista', 'Enviando']);
+        }
+
+        $(document).ready(function() {
+            $("a[rel=foto_carro]").fancybox({
+                'titleShow'         : false,
+            });
+
+            botao = $('#contatoEnviar');
+            habilitarBotaoSubmit(botao, true);
+
+            $('#contatoForm').validationEngine();
+
+            options = {
+                beforeSubmit:   preEnvio,  // pre-submit callback
+                success:        finalizarContato, // post-submit callback
+                error:          finalizarContato,
+                dataType:       'json',
+                resetForm:      true,
+            };
+            $("#contatoForm").ajaxForm(options);
+
+
+
+        })
+    </script>
+
+
+        
+        
+         <!--[if IE]>
+                <script src="/media/style/js/jquery.adeus.ie6.min.js" type="text/javascript"></script>
+                <link type="text/css" href="/media/style/original/css/style_ie.css" rel="stylesheet"/>
+                <script src="/media/style/original/js/jquery.corner.js" type="text/javascript"></script>
+                <script src="/media/style/js/aw_ini_ie.js" type="text/javascript"></script>
+				
+			<script type="text/javascript">
+                    $(document).ready(function(){
+                        $("#idioma > input[type='image']").click(function(){
+                            $('<input />').attr('type', 'hidden')
+                                .attr('name', 'language')
+                                .attr('value', $(this).attr('value'))
+                                .appendTo('#idioma');
+                            return true;
+                        });
+                    });
+                </script>	
+				
+            <![endif]-->
+        
+    </head>
+    <body id="perfil">
+        <div id="pagina">
+			<div id="cabecalho">
+				<div id="cabecalho-interno">
+					<div id="logotipo">
+						<h1>
+							<a href="/?modo=logo" title="Ir para página inicial"><img src="/media/style/images/logotipo.png" alt="Búzios Táxi" title="Ir para página inicial" /></a>
+							<img style="display: none;" src="/media/style/images/avatar_logo.jpg" alt="Búzios Táxi" title="Búzios Táxi" />
+						</h1>
+					</div>
+					<ul id="menu-principal">
+						<li><a href="/taxistas/?modo=superior">Taxistas</a></li>
+						<li><a href="/pontos/?modo=superior">Pontos de Táxi</a></li>
+                        
+                        
+						<li><a href="/tarifario/?modo=superior">Tarifário</a></li>
+                        <li><a href="/agenda/?modo=superior">Translado Econômico</a></li>
+                        <li><a href="/apoio/?modo=superior">Apoios</a></li>
+                        <li><a href="/blog/?modo=superior">Blog</a></li>
+					</ul>
+                    <div id="migalha">
+                        
+    <a href="/">Início</a>
+    <span class="separador">»</span>
+    <a href="/taxistas/">Taxistas</a>
+    <span class="separador">»</span>
+    <a href="/ponto-buzioscoopertaxi/">Búzios Cooper Táxi</a>
+    <span class="separador">»</span>
+    <span class="atual">Rogério Ferrari N. Pereira</span>
+
+                    </div>
+                    <div id="idiomas">
+                        
+                        <form action="/i18n/setlang/" method="post">
+                            
+                            <input name="next" type="hidden" value="/rogerio/" />
+                            
+                            
+                                <input type="image" name="language" src="/media/style/images/bandeiras/us.gif" value="en" title="English" />
+                            
+                            
+                                <input type="image" name="language" src="/media/style/images/bandeiras/ar.gif" value="es" title="Español" />
+                            
+                        </form>
+                        
+                    </div>
+					<div id="form-pesquisa">
+						<form id="form-pesquisa-interno" action="/pesquisa/">
+							<input type="text" name="q" title="Pesquisar taxista" class="campo-pesquisa" value="" autocomplete="off" />
+							<input type="submit" class="bt-submit-pesquisa icone i-lupa" title="Pesquisar" value="Pesquisar"/>
+                        </form>
+                        <script type="text/javascript">
+                            $("#form-pesquisa-interno .campo-pesquisa").defaultvalue("Pesquisar taxista");
+                        </script>
+					</div>
+				</div>
+			</div>
+			<div id="corpo">
+				<div id="corpo-interno">
+					
+    <div id="principal" class="tres-colunas">
+        <div id="recipiente">
+            
+    <div class="fl-r compartilhar-topo">
+        <script src="http://connect.facebook.net/pt_BR/all.js#xfbml=1"></script>
+        <fb:like href="www.buziostaxi.com.br/rogerio/" layout="button_count"></fb:like>
+    </div>
+    <div class="fl-r compartilhar-topo">
+        <a href="http://twitter.com/share" class="twitter-share-button" data-url="www.buziostaxi.com.br/rogerio/" data-text="Búzios Táxi - Rogério" data-count="horizontal">Tweet</a>
+        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    </div>
+    <h2 class="titulo">Rogério</h2>
+
+            <div id="conteudo" class="modulo ">
+                
+    <ul class="icones-funcoes">
+        <li class="link-aumentar-texto" title="Aumentar texto" onclick="texto.aumentar()">
+            <span class="icone i-aumentar-letra"></span>
+        </li>
+        <li class="link-normal-texto" title="Texto normal" onclick="texto.resetar()">
+            <span class="icone i-letra-normal"></span>
+        </li>
+        <li class="link-diminuir-texto" title="Diminuir texto" onclick="texto.diminuir()">
+            <span class="icone i-diminuir-letra"></span>
+        </li>
+    </ul>
+    <div class="menu-alternado modulo-menu sobre-trabalho">
+        <h3 class="titulo aberto">
+            <span class="texto">Pessoal</span>
+            <div class="linha"></div>
+            <span class="icone"></span>
+        </h3>
+		<ul class="informacao">
+            <li>
+                <p class="ref">Nome Completo:</p>
+                <p class="valor">Rogério Ferrari N. Pereira</p>
+            </li>
+			
+			<li>
+			    <p class="ref">Nascimento:</p>
+                <p class="valor">01 de Março de 1968</p>
+            </li>
+			
+		</ul>
+        <h3 class="titulo aberto">
+            <span class="texto">Meu trabalho</span>
+            <div class="linha"></div>
+            <span class="icone"></span>
+        </h3>
+        <ul class="informacao">
+            
+            <li>
+                <p class="ref">Conheço bem:</p>
+                <p class="valor">Somente Búzios</p>
+            </li>
+            
+            
+            <li>
+                <p class="ref">Serviço(s):</p>
+                <p class="valor">Táxi    </p>
+            </li>
+            
+            
+            <li>
+                <p class="ref">Pagamento:</p>
+                <p class="valor">Dinheiro</p>
+            </li>
+            
+        </ul>
+        
+        <h3 class="titulo aberto">
+            <span class="texto">Idiomas que falo</span>
+            <div class="linha"></div>
+            <span class="icone"></span>
+        </h3>
+        <ul class="informacao">
+            
+            <li>
+                <p class="ref">Espanhol:</p>
+                <p class="valor">Básico</p>
+            </li>
+            
+        </ul>
+        
+
+    </div>
+    <div class="menu-alternado modulo-menu sobre-carro">
+        <h3 class="titulo aberto">
+            <span class="texto">Sobre meu carro</span>
+            <div class="linha"></div>
+            <span class="icone"></span>
+        </h3>
+        <ul class="informacao">
+            <li>
+                <p class="ref">Modelo:</p>
+                <p class="valor">Meriva - Premium</p>
+            </li>
+            <li>
+                <p class="ref">Ano:</p>
+                <p class="valor">2010 / 2011</p>
+            </li>
+            <li>
+                <p class="ref">Som:</p>
+                <p class="valor">CD MP3</p>
+            </li>
+            <li>
+                <p class="ref">Acessórios:</p>
+                <p class="valor">GPS e Ar-Condicionado</p>
+            </li>
+            
+            <li>
+                <p class="ref">Fotos:</p>
+                <div class="valor">
+                    
+                        <div class="moldura-miniatura">
+                            <a href="/media/taxistafotos/IMG_0679.jpg" rel="foto_carro" class="miniatura-fixa miniatura-m">
+                                <img src="/media/taxistafotos/IMG_0679.jpg.80x80_q85_crop-smart.jpg" alt="Meriva - Premium" />
+                            </a>
+                        </div>
+                    
+                        <div class="moldura-miniatura">
+                            <a href="/media/taxistafotos/IMG_0680.jpg" rel="foto_carro" class="miniatura-fixa miniatura-m">
+                                <img src="/media/taxistafotos/IMG_0680.jpg.80x80_q85_crop-smart.jpg" alt="Meriva - Premium" />
+                            </a>
+                        </div>
+                    
+                        <div class="moldura-miniatura">
+                            <a href="/media/taxistafotos/IMG_0681.jpg" rel="foto_carro" class="miniatura-fixa miniatura-m">
+                                <img src="/media/taxistafotos/IMG_0681.jpg.80x80_q85_crop-smart.jpg" alt="Meriva - Premium" />
+                            </a>
+                        </div>
+                    
+                        <div class="moldura-miniatura">
+                            <a href="/media/taxistafotos/IMG_0682.jpg" rel="foto_carro" class="miniatura-fixa miniatura-m">
+                                <img src="/media/taxistafotos/IMG_0682.jpg.80x80_q85_crop-smart.jpg" alt="Meriva - Premium" />
+                            </a>
+                        </div>
+                    
+                </div>
+            </li>
+            
+            
+        </ul>
+    </div>
+    <a name="contato"></a>
+    <div class="menu-alternado modulo-menu sobre-contato">
+        <h3 class="titulo aberto">
+            <span class="texto">Contato</span>
+            <div class="linha"></div>
+            <span class="icone"></span>
+        </h3>
+        <ul class="informacao">
+            
+            <li>
+                <p class="ref">Celular Vivo:</p>
+                <p class="valor">(22) 99905-1543</p>
+            </li>
+            
+            <li>
+                <p class="ref">Celular Claro:</p>
+                <p class="valor">(22) 99251-2334</p>
+            </li>
+            
+            <li>
+                <p class="ref">MSN:</p>
+                <p class="valor"><a href='mailto:taxiferrari@hotmail.com'>taxiferrari@hotmail.com</a></p>
+            </li>
+            
+            <li>
+                <p class="ref">E-mail:</p>
+                <p class="valor"><a href='mailto:rogerio@buziostaxi.com.br'>rogerio@buziostaxi.com.br</a></p>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div class="menu-alternado modulo-menu sobre-contato">
+            <h3 class="titulo aberto">
+                <span class="texto">Enviar mensagem</span>
+                <div class="linha"></div>
+                <span class="icone"></span>
+            </h3>
+            <ul class="informacao">
+                <form id="contatoForm" class="form" method="post" action="/rogerio/contato">
+                    
+                        <li>
+                            <p class="ref"><label for="id_nome">Nome</label>:</p>
+                            <p class="valor"><input id="id_nome" type="text" class="validate[required]" name="nome" /><small style="display: block;" class="cor-claro"></small></p>
+                        </li>
+                    
+                        <li>
+                            <p class="ref"><label for="id_email">Email</label>:</p>
+                            <p class="valor"><input id="id_email" type="text" class="validate[required,custom[email]]" name="email" /><small style="display: block;" class="cor-claro"></small></p>
+                        </li>
+                    
+                        <li>
+                            <p class="ref"><label for="id_telefone">Telefone</label>:</p>
+                            <p class="valor"><input id="id_telefone" type="text" class="validate[required]" name="telefone" /><small style="display: block;" class="cor-claro">Não esqueça do DDD</small></p>
+                        </li>
+                    
+                        <li>
+                            <p class="ref"><label for="id_assunto">Assunto</label>:</p>
+                            <p class="valor"><input id="id_assunto" type="text" class="validate[required]" name="assunto" /><small style="display: block;" class="cor-claro"></small></p>
+                        </li>
+                    
+                        <li>
+                            <p class="ref"><label for="id_mensagem">Mensagem</label>:</p>
+                            <p class="valor"><textarea id="id_mensagem" rows="10" cols="40" name="mensagem" class="validate[required]"></textarea><small style="display: block;" class="cor-claro"></small></p>
+                        </li>
+                    
+                    <li>
+                        <p class="ref"><label>&nbsp;</label></p>
+                        <div class="valor">
+                            <div class="bt-confirma bt-submit">
+                                <span class="img-bt-l">
+                                    <input id="contatoEnviar" type="submit" class="link-bt" value="Aguarde" disabled="disabled" />
+                                </span>
+                                <span class="img-bt-r"></span>
+                            </div>
+                        </div>
+                    </li>
+                </form>
+            </ul>
+        </div>
+    
+
+            </div>
+        </div>
+        <div id="conteudo-secundario" class=" estilo-padrao-laterais ">
+            
+                <div class="modulo">
+                    <div class="modulo-informacao">
+                        <h3 class="titulo fixo">
+                            Siga-nos
+                            <span class="icone i-seta-direita"></span>
+                        </h3>
+                        <ul class="informacao link-social">
+    <li class="sub-item"><a href="http://www.twitter.com/buziostaxi" target="_blank"><span class="valor">Twitter</span><span class="icone twitter"></span></a></li>
+    <li class="sub-item"><a href="http://www.facebook.com/buziostaxi" target="_blank"><span class="valor">Facebook</span><span class="icone facebook"></span></a></li>
+</ul>
+                    </div>
+                </div>
+                <div class="modulo-informacao modulo modulo-publicidade">
+                    <h3 class="titulo fixo">
+                        Publicidade
+                        <span class="icone i-seta-direita"></span>
+                    </h3>
+                    <script type="text/javascript">
+						bb_bid = "379863";
+						bb_lang = "pt-BR";
+						bb_keywords = "buzios, viagem, turismo, celular, casa, regiao dos lagos";
+						bb_name = "custom";
+						bb_limit = "10";
+						bb_format = "bbi";
+					</script>
+					<script type="text/javascript" src="http://static.boo-box.com/javascripts/embed.js"></script> 
+                    
+                </div>
+            
+        </div>
+    </div>
+    <div id="barra-lateral" class=" estilo-padrao-laterais ">
+        
+    <div class="modulo topo-lateral">
+        <div class="foto-perfil">
+            <a href="/rogerio/">
+                <img src="/media/taxistaperfil/rogerio.jpg.160x160_q85_crop-smart.jpg" alt="Rogério Ferrari N. Pereira" />
+            </a>
+        </div>
+        <div class="sobre-mim"></div>
+        <div class="modulo-informacao">
+            <h3 class="titulo fixo">
+                Básico
+                <span class="icone i-seta-direita"></span>
+            </h3>
+            <ul class="informacao">
+                
+                <li class="sub-item">
+                    <span class="ref">Apelido:</span>
+                    <span class="valor">Rogério</span>
+                </li>
+                
+                
+                <li class="sub-item">
+                    <span class="ref">Telefone:</span>
+                    <span class="valor">(22) 99905-1543</span>
+                </li>
+                
+                
+                <li class="sub-item">
+                    <span class="ref">Inscrição:</span>
+                    <span class="valor">00129168</span>
+                </li>
+                
+                
+                <li class="sub-item">
+                    <span class="ref">Ponto:</span>
+                    <span class="valor">Búzios Cooper Táxi</span>
+                </li>
+                
+                
+                
+                <li class="sub-item">
+                    <span class="ref">Carro: </span>
+                    <span class="valor">Meriva - Premium</span>
+                </li>
+                
+            </ul>
+        </div>
+        <div class="modulo-informacao">
+            <h3 class="titulo fixo">
+                Experiência
+                <span class="icone i-seta-direita"></span>
+            </h3>
+            <ul class="informacao">
+                
+                <li class="sub-item">
+                    <span class="valor">27 anos de habilitação</span>
+                </li>
+                
+                
+                <li class="sub-item">
+                    <span class="valor">21 anos como taxista</span>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+    
+
+    </div>
+
+					<div class="clear"></div>
+				</div>
+            </div>
+			<div id="rodape">
+                <div class="diretorio">
+                    <div id="rodape-interno">
+                        <div class="coluna col-um-setimo ultimo-linha">
+                            <ul class="menu-rodape ">
+                                <h3><a href="/?modo=diretorio">Búzios Táxi</a></h3>
+                                
+                                
+                                    
+                                        <li ><a href="/info/cadastre-seu-taxi/?modo=diretorio">Cadastre seu Taxi</a></li>
+                                    
+                                        <li ><a href="/info/anuncie-aqui/?modo=diretorio">Anuncie Aqui</a></li>
+                                    
+                                        <li ><a href="/info/sugestoes/?modo=diretorio">Sugestões</a></li>
+                                    
+                                        <li class="ultimo-linha"><a href="/info/servicos/?modo=diretorio">Serviços</a></li>
+                                    
+                            </ul>
+                            <ul class="menu-rodape ultimo-linha ultimo-linha">
+                                <h3><a href="/pontos/?modo=diretorio">Pontos</a></h3>
+                                
+                                    <li >
+                                        <a href="/ponto-buzioscoopertaxi/?modo=diretorio">Búzios Cooper Táxi</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-geriba/?modo=diretorio">Geribá</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-Hospital/?modo=diretorio">Hospital</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-praca/?modo=diretorio">Praça</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-rodoviaria/?modo=diretorio">Rodoviária</a>
+                                    </li>
+                                
+                            </ul>
+                        </div>
+                        <ul class="menu-rodape coluna col-um-setimo ultimo-linha">
+                            <h3><a href="/taxistas/?modo=diretorio">Taxistas</a></h3>
+                            
+                                <li >
+                                    <a href="/arthur/?modo=diretorio" title="Arthur da Silva Valles">Arthur</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/aurelio/?modo=diretorio" title="Aurélio dos Santos">Aurélio</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/beto/?modo=diretorio" title="Alberto Santos Silva">Beto</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/bruno/?modo=diretorio" title="Carlos Bruno Carvalho Moreira">Bruno</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/brunosantos/?modo=diretorio" title="Bruno de Jesus C. dos Santos">Bruno Santos</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/cadinho/?modo=diretorio" title="Claudenil da Costa Ramos">Cadinho</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/carlindo/?modo=diretorio" title="Carlindo Chaves de Souza">Carlindo</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/carlos/?modo=diretorio" title="Antônio Carlos Ferreira">Carlos</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/celestino/?modo=diretorio" title="Celestino Bertti">Celestino</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/deivison/?modo=diretorio" title="Deivison Moraes Valadão">Deivison</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/dico/?modo=diretorio" title="Valcemir Freire de Olivera">Dico</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/didi/?modo=diretorio" title="João Batista G. da Silva">Didi</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/dilan/?modo=diretorio" title="Dilan Silva Pereira">Dilan</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/eduardo/?modo=diretorio" title="Eduardo Pereira de Barros">Eduardo</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/fernando/?modo=diretorio" title="Fernando de Carvalho Marques">Fernando</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/franck/?modo=diretorio" title="Franck Ferreira Vital">Franck</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/guilherme/?modo=diretorio" title="Guilherme Campanario Rodriguês">Guilherme</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                                <li >
+                                    <a href="/henrique/?modo=diretorio" title="Claudio Henrique Rocha Armando">Henrique</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/humberto/?modo=diretorio" title="Humberto Antonio Pereira">Humberto</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/igor/?modo=diretorio" title="Igor Marques">Igor</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/jb/?modo=diretorio" title="João Batista Nascimento">JB</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/joaogomes/?modo=diretorio" title="João Carlos da Costa Gomes">João Gomes</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/joaoluiz/?modo=diretorio" title="João Luiz Antunes da Costa">João Luiz</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/jonas/?modo=diretorio" title="Jonas Siqueira de Alcantra Neto">Jonas</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/ze/?modo=diretorio" title="José Roberto Ramos Calisto">José Roberto</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/josue/?modo=diretorio" title="Josué de Souza Silveira">Josue</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/julio/?modo=diretorio" title="Júlio Cesar Freire de Mesquita">Júlio</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/juniornobre/?modo=diretorio" title="Junior da Conceição Carvalho">Junior Nobre</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/Luis/?modo=diretorio" title="Luis Antonio de Souza">Luis</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/luisotavio/?modo=diretorio" title="Luís Otávio Lopes Remedy">Luís Otávio</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/maicon/?modo=diretorio" title="Maicon Carvalho dos Santos">Maicon</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/marcelocardoso/?modo=diretorio" title="Marcelo Cardoso de Abreu">Marcelo Cardoso</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/marcelofarias/?modo=diretorio" title="Marcelo de Mendonça Farias">Marcelo Farias</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/matheus/?modo=diretorio" title="Matheus Magalhães Rangel">Matheus</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                                <li >
+                                    <a href="/mazinho/?modo=diretorio" title="Marzio de Carvalho Linhares">Mazinho</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/oliveira/?modo=diretorio" title="Ademilson Oliveira da Silva">Oliveira</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/paulo/?modo=diretorio" title="Paulo Cezar Da Matta">Paulo</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/rafael/?modo=diretorio" title="Rafael Matsumoto">Rafael</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/reinaldo/?modo=diretorio" title="Reinaldo de Matos Ferreira">Reinaldo</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/renato/?modo=diretorio" title="Renato Rocha Matos Junior">Renato</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/roberto/?modo=diretorio" title="José Roberto da Silva Farias">Roberto</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/robinho/?modo=diretorio" title="Robson Oliveira de Souza">Robinho</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/rogerio/?modo=diretorio" title="Rogério Ferrari N. Pereira">Rogério</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/rogerioschneider/?modo=diretorio" title="Rogério Schneider Carvalho Pinto">Rogério Schneider</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/samuel/?modo=diretorio" title="Samuel da Silva Valles">Samuel</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/totonho/?modo=diretorio" title="José Antônio Alegre da Silva">Totonho</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/valterluiz/?modo=diretorio" title="Valter Luiz de Souza">Valter Luiz</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/vicente/?modo=diretorio" title="Vicente Armando Berti">Vicente</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/vinicius/?modo=diretorio" title="Vinicius Marques P. Barros">Vinicius</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/waldilei/?modo=diretorio" title="Waldilei Ramos de Oliveira">Waldilei</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/zepedro/?modo=diretorio" title="José Pedro da Silva">Zé Pedro</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                        </ul>
+                        <div id="apoio-rodape" class="menu-rodape coluna col-tres-setimo ultimo-linha ultimo">
+                            
+                            <h3><a href="/apoio/?modo=diretorio">Apoio</a></h3>
+                            
+                            <img src="/media/style/images/apoio/logo_astab.png">
+
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="credito">
+                    <div class="separador-horizontal"></div>
+                    <div id="aw-logo">
+                        <span class="direitos">Búzios Táxi - Todos os direitos reservados</span>
+                        <br />
+                        <a href="http://www.amazingworks.com.br" target="_blank" title="Desenvolvido por AmazingWorks">
+                            <img src="/media/style/images/aw_logo.png" alt="AmazingWorks" />
+                        </a>
+                    </div>
+                </div>
+			</div>
+		</div>
+
+        <div id="mensagens"></div>
+
+		<!-- sugestões -->
+		<script type="text/javascript">
+			var uservoiceOptions = {
+			  /* required */
+			  key: 'buziostaxi',
+			  host: 'buziostaxi.uservoice.com',
+			  forum: '50787',
+			  showTab: true,
+			  /* optional */
+			  alignment: 'left',
+			  background_color:'#455a6b',
+			  text_color: 'white',
+			  hover_color: '#697e8f',
+			  lang: 'pt_BR'
+			};
+
+			function _loadUserVoice() {
+			  var s = document.createElement('script');
+			  s.setAttribute('type', 'text/javascript');
+			  s.setAttribute('src', ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js");
+			  document.getElementsByTagName('head')[0].appendChild(s);
+			}
+			_loadSuper = window.onload;
+			window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
+		</script>
+		<!-- fim sugestões -->
+		<!-- analitycs -->
+		    <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-17199816-1']);
+                _gaq.push(['_trackPageview']);
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+           </script>
+        <!-- fim analitycs -->
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            var $_Tawk_API={},$_Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/555d55e519120cff184faf01/default';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
+        <!--End of Tawk.to Script-->
+
+        <div id="fb-root"></div>
+        <script type="application/javascript">
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '462273910606583',
+                    xfbml      : true,
+                    version    : 'v2.3'
+                });
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+    </body>
+</html>

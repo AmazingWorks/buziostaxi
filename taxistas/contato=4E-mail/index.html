@@ -1,0 +1,1118 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="pt" lang="pt">
+    <head>
+        <title>Búzios Táxi
+    - Taxistas
+Taxistas</title>
+        <link rel="search" href="/media/opensearch.xml" type="application/opensearchdescription+xml" title="Busca Búzios Táxi" />
+        <link rel="shortcut icon" href="/media/style/images/favicon.ico">
+        <meta name="description" content="Búzios Táxi - Precisando de táxi, transfer ou city tour? Chega de esperar, chega de procurar, encontre um carro ao seu gosto agora mesmo.">
+        <meta name="keywords" content="Búzios, táxi, taxista, catálogo, transporte, transfer, City Tour, passeio">
+        
+        
+            <link rel="stylesheet" href="/media/style/original/css/style.css" type="text/css" />
+        
+
+        
+        
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+        
+    
+    
+        <script src="/media/style/js/jquery.qtip-1.0.0-rc3.min.js" type="text/javascript"></script>
+        <script src="/media/style/js/aw_ini.js" type="text/javascript"></script>
+        <script src="/media/style/js/jquery.autocomplete.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+
+            function carregarMensagens() {
+                $("#mensagens").load('/carregarMensagensAviso/', function(response, status, xhr) {
+                    if (status == "error") {
+                        $(this).html("Erro ao carregar suas mensagens.");
+                    }
+                    exibirMensagem();
+                });
+            }
+            function exibirMensagem() {
+                var $alert = $('#mensagens');
+                if($('#mensagens > ul > li').length)
+                {
+                    var alerttimer = window.setTimeout(function () {
+                        $alert.trigger('click');
+                    }, 4500);
+                    $alert.animate({height: $alert.css('line-height') || '80px'}, 250)
+                    .click(function () {
+                        window.clearTimeout(alerttimer);
+                        $alert.animate({height: '0'}, 250);
+                        window.setTimeout()
+                    });
+                }
+            }
+            $(document).ready(function() {
+                $("body").css({"background-color": "#1F354A"});
+                $('.icones-funcoes li').qtip({
+                    position: {corner: {target: 'topMiddle', tooltip: 'bottomMiddle'}, adjust: {y: -4}},
+                    show: { effect: { length: 20 } },
+                    hide: { effect: { length: 100 } },
+                    style: 'padrao'
+                })
+
+                $(".campo-pesquisa").autocomplete("/autocomplete/", {
+                    width: 254,
+                    max: 6,
+                    minChars:1,
+                    scroll: false,
+                    selectFirst: false,
+                    //scrollHeight: 300,
+                    formatItem: function(data, i, n, value) { // formatar o dado vindo do servidor para ser exibido
+                        return value.split('#')[0]
+                    },
+		            formatResult: function(data, value) { // o que aparece dp do clique
+            			return value.split("#")[1];
+		            }
+                }).result(function(event, item) { // para onde ele vai quando clica
+                    location.href = item[0].split('#')[1];
+                });
+
+                exibirMensagem();
+            });
+            //estilo padrao ToolTip
+            $.fn.qtip.styles.padrao = {
+                paddingTop: 0,
+                paddingRight: 5,
+                paddingBottom: 0,
+                paddingLeft: 5,
+                background: '#133047',
+                color: '#ffffff',
+                textAlign: 'center',
+                fontSize: '0.7em',
+                border: {width: 0, radius: 3, color: '#133047'},
+                tip: {corner: 'bottomMiddle', size: {x:8,y:3}}
+            }
+
+        </script>
+
+        
+    <script type="text/javascript">
+    $(document).ready(function(){
+        divMovel = $('#barra-lateral');
+        distanciaInicial = divMovel.offset().top;
+        tamanhoInicial = divMovel.height();
+        fimMovimento = $("#rodape").offset().top;
+        $(window).scroll(function(){
+            if($(window).scrollTop() - distanciaInicial + 8 > 0) {
+                if($(window).scrollTop() + tamanhoInicial < fimMovimento) {
+                    divMovel.css("margin-top", $(window).scrollTop() - distanciaInicial + 8 + "px");
+                } else {
+                    divMovel.css("margin-top", fimMovimento - tamanhoInicial - distanciaInicial + "px");
+                }
+            } else {
+                divMovel.css("margin-top", "0px");
+            }
+        });
+    });
+    </script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#ordenacaoForm select").change(function() {
+                $("#ordenacaoForm").submit();
+            })
+        })
+    </script>
+
+
+        
+        
+         <!--[if IE]>
+                <script src="/media/style/js/jquery.adeus.ie6.min.js" type="text/javascript"></script>
+                <link type="text/css" href="/media/style/original/css/style_ie.css" rel="stylesheet"/>
+                <script src="/media/style/original/js/jquery.corner.js" type="text/javascript"></script>
+                <script src="/media/style/js/aw_ini_ie.js" type="text/javascript"></script>
+				
+			<script type="text/javascript">
+                    $(document).ready(function(){
+                        $("#idioma > input[type='image']").click(function(){
+                            $('<input />').attr('type', 'hidden')
+                                .attr('name', 'language')
+                                .attr('value', $(this).attr('value'))
+                                .appendTo('#idioma');
+                            return true;
+                        });
+                    });
+                </script>	
+				
+            <![endif]-->
+        
+    </head>
+    <body id="lista-resultado">
+        <div id="pagina">
+			<div id="cabecalho">
+				<div id="cabecalho-interno">
+					<div id="logotipo">
+						<h1>
+							<a href="/?modo=logo" title="Ir para página inicial"><img src="/media/style/images/logotipo.png" alt="Búzios Táxi" title="Ir para página inicial" /></a>
+							<img style="display: none;" src="/media/style/images/avatar_logo.jpg" alt="Búzios Táxi" title="Búzios Táxi" />
+						</h1>
+					</div>
+					<ul id="menu-principal">
+						<li><a href="/taxistas/?modo=superior">Taxistas</a></li>
+						<li><a href="/pontos/?modo=superior">Pontos de Táxi</a></li>
+                        
+                        
+						<li><a href="/tarifario/?modo=superior">Tarifário</a></li>
+                        <li><a href="/agenda/?modo=superior">Translado Econômico</a></li>
+                        <li><a href="/apoio/?modo=superior">Apoios</a></li>
+                        <li><a href="/blog/?modo=superior">Blog</a></li>
+					</ul>
+                    <div id="migalha">
+                        
+    <a href="/?modo=migalha">Início</a>
+    <span class="separador">»</span>
+    <span class="atual">Taxistas</span>
+
+                    </div>
+                    <div id="idiomas">
+                        
+                        <form action="/i18n/setlang/" method="post">
+                            
+                            <input name="next" type="hidden" value="/taxistas/" />
+                            
+                            
+                                <input type="image" name="language" src="/media/style/images/bandeiras/us.gif" value="en" title="English" />
+                            
+                            
+                                <input type="image" name="language" src="/media/style/images/bandeiras/ar.gif" value="es" title="Español" />
+                            
+                        </form>
+                        
+                    </div>
+					<div id="form-pesquisa">
+						<form id="form-pesquisa-interno" action="/pesquisa/">
+							<input type="text" name="q" title="Pesquisar taxista" class="campo-pesquisa" value="" autocomplete="off" />
+							<input type="submit" class="bt-submit-pesquisa icone i-lupa" title="Pesquisar" value="Pesquisar"/>
+                        </form>
+                        <script type="text/javascript">
+                            $("#form-pesquisa-interno .campo-pesquisa").defaultvalue("Pesquisar taxista");
+                        </script>
+					</div>
+				</div>
+			</div>
+			<div id="corpo">
+				<div id="corpo-interno">
+					
+    <div id="principal" class="tres-colunas">
+        <div id="recipiente">
+            
+    <h2 class="titulo">Taxistas</h2>
+
+            <div id="conteudo" class="modulo ">
+                
+
+
+
+    <div id="informacao-topo-conteudo" class="fonte-pequena">
+        
+            <form method="get" id="ordenacaoForm" class="fl-r">
+                
+                    <label for="id_ordem">Ordenar por</label>
+                    <select name="ordem" id="id_ordem">
+<option value="id">Mais Antigo</option>
+<option value="-id">Mais Recente</option>
+<option value="apelido">Apelido A-z</option>
+<option value="-apelido">Apelido Z-a</option>
+<option value="nome">Nome A-z</option>
+<option value="-nome">Nome Z-a</option>
+</select>
+                
+            </form>
+            Total de 24 taxistas encontrados.
+        
+    </div>
+
+
+
+<div class="resultados">
+    
+
+    <div class="resultado-item">
+        <div class="base-fotos">
+            <div class="moldura-miniatura foto-principal">
+                <a href="/celestino/" class="miniatura-fixa">
+                    <img src="/media/taxistaperfil/celestino.JPG.110x110_q85_crop-smart.jpg" width="110" height="110" alt="Celestino" title="Celestino" />
+                </a>
+            </div>
+            
+            <div class="fotos-sub">
+                
+                <div class="moldura-miniatura foto-sub-item ">
+                    <a href="/celestino/" class="miniatura-fixa">
+                        <img src="/media/taxistafotos/DSC_2647_Medium.JPG.50x50_q85_crop-smart.jpg" width="50" height="50" alt="Meriva - Premium" title="Meriva - Premium" />
+                    </a>
+                </div>
+                
+                <div class="moldura-miniatura foto-sub-item ">
+                    <a href="/celestino/" class="miniatura-fixa">
+                        <img src="/media/taxistafotos/DSC_2648_Medium.JPG.50x50_q85_crop-smart.jpg" width="50" height="50" alt="Meriva - Premium" title="Meriva - Premium" />
+                    </a>
+                </div>
+                
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+        <ul class="informacao">
+            <li>
+                <p class="ref">Nome:</p>
+                <p class="valor"><b><a href="/celestino/" title="Celestino Bertti">Celestino</a></b></p>
+            </li>
+            <li>
+                <p class="ref">Serviço(s):</p>
+                <p class="valor">Táxi, Transfer e Entregas</p>
+            </li>
+            <li>
+                <p class="ref">Ponto:</p>
+                <p class="valor">McDonald&#39;s</p>
+            </li>
+            <li>
+                <p class="ref">Carro:</p>
+                <p class="valor">Meriva - Premium</p>
+            </li>
+            <li>
+                <p class="ref">Conhece:</p>
+                <p class="valor">Região Sudeste</p>
+            </li>
+            <li>
+                <p class="ref">Telefone:</p>
+                <p class="valor">(22) 99252-4443</p>
+            </li>
+            <li class="base-link-mais">
+                <p class="valor">
+                    <a href="/celestino/" title="Ver perfil completo" class="link-mais">
+                        Mais Informações
+                        <span class="icone i-ir"></span>
+                    </a>
+                </p>
+            </li>
+        </ul>
+    </div>
+    
+
+    <div class="resultado-item">
+        <div class="base-fotos">
+            <div class="moldura-miniatura foto-principal">
+                <a href="/vicente/" class="miniatura-fixa">
+                    <img src="/media/taxistaperfil/vicente.jpg.110x110_q85_crop-smart.jpg" width="110" height="110" alt="Vicente" title="Vicente" />
+                </a>
+            </div>
+            
+            <div class="fotos-sub">
+                
+                <div class="moldura-miniatura foto-sub-item ">
+                    <a href="/vicente/" class="miniatura-fixa">
+                        <img src="/media/taxistafotos/IMG_6578_Medium.JPG.50x50_q85_crop-smart.jpg" width="50" height="50" alt="Zafira - Comfort" title="Zafira - Comfort" />
+                    </a>
+                </div>
+                
+                <div class="moldura-miniatura foto-sub-item ">
+                    <a href="/vicente/" class="miniatura-fixa">
+                        <img src="/media/taxistafotos/IMG_6580_Medium.JPG.50x50_q85_crop-smart.jpg" width="50" height="50" alt="Zafira - Comfort" title="Zafira - Comfort" />
+                    </a>
+                </div>
+                
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+        <ul class="informacao">
+            <li>
+                <p class="ref">Nome:</p>
+                <p class="valor"><b><a href="/vicente/" title="Vicente Armando Berti">Vicente</a></b></p>
+            </li>
+            <li>
+                <p class="ref">Serviço(s):</p>
+                <p class="valor">Táxi</p>
+            </li>
+            <li>
+                <p class="ref">Ponto:</p>
+                <p class="valor">Rodoviária</p>
+            </li>
+            <li>
+                <p class="ref">Carro:</p>
+                <p class="valor">Zafira - Comfort</p>
+            </li>
+            <li>
+                <p class="ref">Conhece:</p>
+                <p class="valor">Somente Búzios</p>
+            </li>
+            <li>
+                <p class="ref">Telefone:</p>
+                <p class="valor">(22) 99227-0511</p>
+            </li>
+            <li class="base-link-mais">
+                <p class="valor">
+                    <a href="/vicente/" title="Ver perfil completo" class="link-mais">
+                        Mais Informações
+                        <span class="icone i-ir"></span>
+                    </a>
+                </p>
+            </li>
+        </ul>
+    </div>
+    
+
+    <div class="resultado-item">
+        <div class="base-fotos">
+            <div class="moldura-miniatura foto-principal">
+                <a href="/ze/" class="miniatura-fixa">
+                    <img src="/media/taxistaperfil/ze_1.jpg.110x110_q85_crop-smart.jpg" width="110" height="110" alt="José Roberto" title="José Roberto" />
+                </a>
+            </div>
+            
+            <div class="fotos-sub">
+                
+                <div class="moldura-miniatura foto-sub-item ">
+                    <a href="/ze/" class="miniatura-fixa">
+                        <img src="/media/taxistafotos/IMG_0700.jpg.50x50_q85_crop-smart.jpg" width="50" height="50" alt="Fiesta Sedan - 1.6" title="Fiesta Sedan - 1.6" />
+                    </a>
+                </div>
+                
+                <div class="moldura-miniatura foto-sub-item ">
+                    <a href="/ze/" class="miniatura-fixa">
+                        <img src="/media/taxistafotos/IMG_0701.jpg.50x50_q85_crop-smart.jpg" width="50" height="50" alt="Fiesta Sedan - 1.6" title="Fiesta Sedan - 1.6" />
+                    </a>
+                </div>
+                
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+        <ul class="informacao">
+            <li>
+                <p class="ref">Nome:</p>
+                <p class="valor"><b><a href="/ze/" title="José Roberto Ramos Calisto">José Roberto</a></b></p>
+            </li>
+            <li>
+                <p class="ref">Serviço(s):</p>
+                <p class="valor">Táxi</p>
+            </li>
+            <li>
+                <p class="ref">Ponto:</p>
+                <p class="valor">Rodoviária</p>
+            </li>
+            <li>
+                <p class="ref">Carro:</p>
+                <p class="valor">Fiesta Sedan - 1.6</p>
+            </li>
+            <li>
+                <p class="ref">Conhece:</p>
+                <p class="valor">Somente Búzios</p>
+            </li>
+            <li>
+                <p class="ref">Telefone:</p>
+                <p class="valor">(22) 99846-0067</p>
+            </li>
+            <li class="base-link-mais">
+                <p class="valor">
+                    <a href="/ze/" title="Ver perfil completo" class="link-mais">
+                        Mais Informações
+                        <span class="icone i-ir"></span>
+                    </a>
+                </p>
+            </li>
+        </ul>
+    </div>
+    
+
+    <div class="resultado-item">
+        <div class="base-fotos">
+            <div class="moldura-miniatura foto-principal">
+                <a href="/arthur/" class="miniatura-fixa">
+                    <img src="/media/taxistaperfil/arthur.jpg.110x110_q85_crop-smart.jpg" width="110" height="110" alt="Arthur" title="Arthur" />
+                </a>
+            </div>
+            
+            <div class="fotos-sub">
+                
+                <div class="moldura-miniatura foto-sub-item ">
+                    <a href="/arthur/" class="miniatura-fixa">
+                        <img src="/media/taxistafotos/IMG_0677.jpg.50x50_q85_crop-smart.jpg" width="50" height="50" alt="Spin - LT" title="Spin - LT" />
+                    </a>
+                </div>
+                
+                <div class="moldura-miniatura foto-sub-item ">
+                    <a href="/arthur/" class="miniatura-fixa">
+                        <img src="/media/taxistafotos/spin_lt02_aU0WJOk.jpg.50x50_q85_crop-smart.jpg" width="50" height="50" alt="Spin - LT" title="Spin - LT" />
+                    </a>
+                </div>
+                
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+        <ul class="informacao">
+            <li>
+                <p class="ref">Nome:</p>
+                <p class="valor"><b><a href="/arthur/" title="Arthur da Silva Valles">Arthur</a></b></p>
+            </li>
+            <li>
+                <p class="ref">Serviço(s):</p>
+                <p class="valor">Táxi, Transfer, CityTour e Entregas</p>
+            </li>
+            <li>
+                <p class="ref">Ponto:</p>
+                <p class="valor">McDonald&#39;s</p>
+            </li>
+            <li>
+                <p class="ref">Carro:</p>
+                <p class="valor">Spin - LT</p>
+            </li>
+            <li>
+                <p class="ref">Conhece:</p>
+                <p class="valor">Brasil</p>
+            </li>
+            <li>
+                <p class="ref">Telefone:</p>
+                <p class="valor">(22) 99819-0009</p>
+            </li>
+            <li class="base-link-mais">
+                <p class="valor">
+                    <a href="/arthur/" title="Ver perfil completo" class="link-mais">
+                        Mais Informações
+                        <span class="icone i-ir"></span>
+                    </a>
+                </p>
+            </li>
+        </ul>
+    </div>
+    
+
+    <div class="resultado-item">
+        <div class="base-fotos">
+            <div class="moldura-miniatura foto-principal">
+                <a href="/deivison/" class="miniatura-fixa">
+                    <img src="/media/taxistaperfil/deivison_1.jpg.110x110_q85_crop-smart.jpg" width="110" height="110" alt="Deivison" title="Deivison" />
+                </a>
+            </div>
+            
+            <div class="fotos-sub">
+                
+                <div class="moldura-miniatura foto-sub-item ">
+                    <a href="/deivison/" class="miniatura-fixa">
+                        <img src="/media/taxistafotos/IMG_0613.jpg.50x50_q85_crop-smart.jpg" width="50" height="50" alt="Spin - LTZ" title="Spin - LTZ" />
+                    </a>
+                </div>
+                
+                <div class="moldura-miniatura foto-sub-item ">
+                    <a href="/deivison/" class="miniatura-fixa">
+                        <img src="/media/taxistafotos/IMG_0616.jpg.50x50_q85_crop-smart.jpg" width="50" height="50" alt="Spin - LTZ" title="Spin - LTZ" />
+                    </a>
+                </div>
+                
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+        <ul class="informacao">
+            <li>
+                <p class="ref">Nome:</p>
+                <p class="valor"><b><a href="/deivison/" title="Deivison Moraes Valadão">Deivison</a></b></p>
+            </li>
+            <li>
+                <p class="ref">Serviço(s):</p>
+                <p class="valor">Táxi</p>
+            </li>
+            <li>
+                <p class="ref">Ponto:</p>
+                <p class="valor">McDonald&#39;s</p>
+            </li>
+            <li>
+                <p class="ref">Carro:</p>
+                <p class="valor">Spin - LTZ</p>
+            </li>
+            <li>
+                <p class="ref">Conhece:</p>
+                <p class="valor">Somente Búzios</p>
+            </li>
+            <li>
+                <p class="ref">Telefone:</p>
+                <p class="valor">(22) 99252-7233</p>
+            </li>
+            <li class="base-link-mais">
+                <p class="valor">
+                    <a href="/deivison/" title="Ver perfil completo" class="link-mais">
+                        Mais Informações
+                        <span class="icone i-ir"></span>
+                    </a>
+                </p>
+            </li>
+        </ul>
+    </div>
+    
+
+    <div class="resultado-item">
+        <div class="base-fotos">
+            <div class="moldura-miniatura foto-principal">
+                <a href="/jb/" class="miniatura-fixa">
+                    <img src="/media/taxistaperfil/jb.jpg.110x110_q85_crop-smart.jpg" width="110" height="110" alt="JB" title="JB" />
+                </a>
+            </div>
+            
+            <div class="fotos-sub">
+                
+                <div class="moldura-miniatura foto-sub-item ">
+                    <a href="/jb/" class="miniatura-fixa">
+                        <img src="/media/taxistafotos/sentra_SL04.jpg.50x50_q85_crop-smart.jpg" width="50" height="50" alt="Sentra - SV" title="Sentra - SV" />
+                    </a>
+                </div>
+                
+                <div class="moldura-miniatura foto-sub-item ">
+                    <a href="/jb/" class="miniatura-fixa">
+                        <img src="/media/taxistafotos/sentra_SL01.jpg.50x50_q85_crop-smart.jpg" width="50" height="50" alt="Sentra - SV" title="Sentra - SV" />
+                    </a>
+                </div>
+                
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+        <ul class="informacao">
+            <li>
+                <p class="ref">Nome:</p>
+                <p class="valor"><b><a href="/jb/" title="João Batista Nascimento">JB</a></b></p>
+            </li>
+            <li>
+                <p class="ref">Serviço(s):</p>
+                <p class="valor">Táxi</p>
+            </li>
+            <li>
+                <p class="ref">Ponto:</p>
+                <p class="valor">McDonald&#39;s</p>
+            </li>
+            <li>
+                <p class="ref">Carro:</p>
+                <p class="valor">Sentra - SV</p>
+            </li>
+            <li>
+                <p class="ref">Conhece:</p>
+                <p class="valor">Somente Búzios</p>
+            </li>
+            <li>
+                <p class="ref">Telefone:</p>
+                <p class="valor">(22) 99957-4535</p>
+            </li>
+            <li class="base-link-mais">
+                <p class="valor">
+                    <a href="/jb/" title="Ver perfil completo" class="link-mais">
+                        Mais Informações
+                        <span class="icone i-ir"></span>
+                    </a>
+                </p>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+
+
+
+<div class="paginacao-completa">
+    
+        <span class="anterior">&lsaquo;&lsaquo; Anterior</span>
+    
+
+    
+        
+            
+                <span class="atual pagina">1</span>
+            
+        
+    
+        
+            
+                <a href="?page=2&amp;contato=4%7CE-mail" class="pagina">2</a>
+            
+        
+    
+        
+            
+                <a href="?page=3&amp;contato=4%7CE-mail" class="pagina">3</a>
+            
+        
+    
+        
+            
+                <a href="?page=4&amp;contato=4%7CE-mail" class="pagina">4</a>
+            
+        
+    
+    
+    
+        <a href="?page=2&amp;contato=4%7CE-mail" class="proximo">Próxima &rsaquo;&rsaquo;</a>
+    
+</div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <div id="conteudo-secundario" class=" estilo-padrao-laterais ">
+            
+                <div class="modulo">
+                    <div class="modulo-informacao">
+                        <h3 class="titulo fixo">
+                            Siga-nos
+                            <span class="icone i-seta-direita"></span>
+                        </h3>
+                        <ul class="informacao link-social">
+    <li class="sub-item"><a href="http://www.twitter.com/buziostaxi" target="_blank"><span class="valor">Twitter</span><span class="icone twitter"></span></a></li>
+    <li class="sub-item"><a href="http://www.facebook.com/buziostaxi" target="_blank"><span class="valor">Facebook</span><span class="icone facebook"></span></a></li>
+</ul>
+                    </div>
+                </div>
+                <div class="modulo-informacao modulo modulo-publicidade">
+                    <h3 class="titulo fixo">
+                        Publicidade
+                        <span class="icone i-seta-direita"></span>
+                    </h3>
+                    <script type="text/javascript">
+						bb_bid = "379863";
+						bb_lang = "pt-BR";
+						bb_keywords = "buzios, viagem, turismo, celular, casa, regiao dos lagos";
+						bb_name = "custom";
+						bb_limit = "10";
+						bb_format = "bbi";
+					</script>
+					<script type="text/javascript" src="http://static.boo-box.com/javascripts/embed.js"></script> 
+                    
+                </div>
+            
+        </div>
+    </div>
+    <div id="barra-lateral" class=" estilo-padrao-laterais ">
+        
+
+    <div class="modulo">
+        <div class="modulo-informacao">
+            <h3 class="titulo fixo">
+                Filtrando por
+                <span class="icone i-seta-direita"></span>
+            </h3>
+            <ul class="informacao">
+                
+                    
+                
+                    
+                
+                    
+                    <li class="sub-item filtrado">
+                        <a href="?" title="Remover este filtro"><small class="icone-close"></small>Forma de contato</a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </div>
+    </div>
+
+ <div class="modulo">
+    
+        
+                <div class="modulo-informacao">
+                    <h3 class="titulo fixo">
+                        Tipo de Carro
+                        <span class="icone i-seta-direita"></span>
+                    </h3>
+                    <ul class="informacao">
+                        
+                            <li class="sub-item"><a href="?contato=4|E-mail&carro=MINIVAN|MINIVAN">Minivan (11)</a></li>
+                        
+                            <li class="sub-item"><a href="?contato=4|E-mail&carro=PERUA|PERUA">Perua (7)</a></li>
+                        
+                            <li class="sub-item"><a href="?contato=4|E-mail&carro=SEDAN|SEDAN">Sedan (7)</a></li>
+                        
+                    </ul>
+                </div>
+        
+    
+        
+                <div class="modulo-informacao">
+                    <h3 class="titulo fixo">
+                        Idioma Falado
+                        <span class="icone i-seta-direita"></span>
+                    </h3>
+                    <ul class="informacao">
+                        
+                            <li class="sub-item"><a href="?idioma=1|Espanhol&contato=4|E-mail">Espanhol (2)</a></li>
+                        
+                            <li class="sub-item"><a href="?idioma=2|Inglês&contato=4|E-mail">Inglês (2)</a></li>
+                        
+                    </ul>
+                </div>
+        
+    
+        
+    
+        
+                <div class="modulo-informacao">
+                    <h3 class="titulo fixo">
+                        Ponto em que trabalha
+                        <span class="icone i-seta-direita"></span>
+                    </h3>
+                    <ul class="informacao">
+                        
+                            <li class="sub-item"><a href="?contato=4|E-mail&ponto=1|McDonald's">Mcdonald&#39;s (18)</a></li>
+                        
+                            <li class="sub-item"><a href="?contato=4|E-mail&ponto=2|Rodoviária">Rodoviária (6)</a></li>
+                        
+                            <li class="sub-item"><a href="?contato=4|E-mail&ponto=3|Praça">Praça (1)</a></li>
+                        
+                    </ul>
+                </div>
+        
+    
+        
+                <div class="modulo-informacao">
+                    <h3 class="titulo fixo">
+                        Serviços prestados
+                        <span class="icone i-seta-direita"></span>
+                    </h3>
+                    <ul class="informacao">
+                        
+                            <li class="sub-item"><a href="?servico=1|Táxi&contato=4|E-mail">Táxi (24)</a></li>
+                        
+                            <li class="sub-item"><a href="?servico=2|Transfer&contato=4|E-mail">Transfer (8)</a></li>
+                        
+                            <li class="sub-item"><a href="?servico=4|Entregas&contato=4|E-mail">Entregas (8)</a></li>
+                        
+                            <li class="sub-item"><a href="?servico=3|CityTour&contato=4|E-mail">Citytour (7)</a></li>
+                        
+                            <li class="sub-item"><a href="?servico=5|Transporte de Animais&contato=4|E-mail">Transporte De Animais (1)</a></li>
+                        
+                    </ul>
+                </div>
+        
+    
+        
+                <div class="modulo-informacao">
+                    <h3 class="titulo fixo">
+                        Recebe como pagamento
+                        <span class="icone i-seta-direita"></span>
+                    </h3>
+                    <ul class="informacao">
+                        
+                            <li class="sub-item"><a href="?contato=4|E-mail&pagamento=1|Dinheiro">Dinheiro (24)</a></li>
+                        
+                            <li class="sub-item"><a href="?contato=4|E-mail&pagamento=3|Cartão de Crédito">Cartão De Crédito (12)</a></li>
+                        
+                            <li class="sub-item"><a href="?contato=4|E-mail&pagamento=4|Agência">Agência (5)</a></li>
+                        
+                            <li class="sub-item"><a href="?contato=4|E-mail&pagamento=2|Cheque">Cheque (4)</a></li>
+                        
+                    </ul>
+                </div>
+        
+    
+        
+                <div class="modulo-informacao">
+                    <h3 class="titulo fixo">
+                        Serviços Até
+                        <span class="icone i-seta-direita"></span>
+                    </h3>
+                    <ul class="informacao">
+                        
+                            <li class="sub-item"><a href="?conhecimento=2|Somente Búzios&contato=4|E-mail">Somente Búzios (17)</a></li>
+                        
+                            <li class="sub-item"><a href="?conhecimento=6|Brasil&contato=4|E-mail">Brasil (5)</a></li>
+                        
+                            <li class="sub-item"><a href="?conhecimento=5|Estado do Rio de Janeiro&contato=4|E-mail">Estado Do Rio De Janeiro (2)</a></li>
+                        
+                            <li class="sub-item"><a href="?conhecimento=1|Região Sudeste&contato=4|E-mail">Região Sudeste (1)</a></li>
+                        
+                    </ul>
+                </div>
+        
+    
+</div>
+
+    </div>
+
+					<div class="clear"></div>
+				</div>
+            </div>
+			<div id="rodape">
+                <div class="diretorio">
+                    <div id="rodape-interno">
+                        <div class="coluna col-um-setimo ultimo-linha">
+                            <ul class="menu-rodape ">
+                                <h3><a href="/?modo=diretorio">Búzios Táxi</a></h3>
+                                
+                                
+                                    
+                                        <li ><a href="/info/cadastre-seu-taxi/?modo=diretorio">Cadastre seu Taxi</a></li>
+                                    
+                                        <li ><a href="/info/anuncie-aqui/?modo=diretorio">Anuncie Aqui</a></li>
+                                    
+                                        <li ><a href="/info/sugestoes/?modo=diretorio">Sugestões</a></li>
+                                    
+                                        <li class="ultimo-linha"><a href="/info/servicos/?modo=diretorio">Serviços</a></li>
+                                    
+                            </ul>
+                            <ul class="menu-rodape ultimo-linha ultimo-linha">
+                                <h3><a href="/pontos/?modo=diretorio">Pontos</a></h3>
+                                
+                                    <li >
+                                        <a href="/ponto-geriba/?modo=diretorio">Geribá</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-mcdonalds/?modo=diretorio">McDonald&#39;s</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-praca/?modo=diretorio">Praça</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-rodoviaria/?modo=diretorio">Rodoviária</a>
+                                    </li>
+                                
+                            </ul>
+                        </div>
+                        <ul class="menu-rodape coluna col-um-setimo ultimo-linha">
+                            <h3><a href="/taxistas/?modo=diretorio">Taxistas</a></h3>
+                            
+                                <li >
+                                    <a href="/arthur/?modo=diretorio" title="Arthur da Silva Valles">Arthur</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/beto/?modo=diretorio" title="Alberto Santos Silva">Beto</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/bruno/?modo=diretorio" title="Carlos Bruno Carvalho Moreira">Bruno</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/carlindo/?modo=diretorio" title="Carlindo Chaves de Souza">Carlindo</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/celestino/?modo=diretorio" title="Celestino Bertti">Celestino</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/deivison/?modo=diretorio" title="Deivison Moraes Valadão">Deivison</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/dilan/?modo=diretorio" title="Dilan Silva Pereira">Dilan</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/eduardo/?modo=diretorio" title="Eduardo Pereira de Barros">Eduardo</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/elton/?modo=diretorio" title="Elton Rosa Ribeiro">Elton</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/franck/?modo=diretorio" title="Franck Ferreira Vital">Franck</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                                <li >
+                                    <a href="/guilherme/?modo=diretorio" title="Guilherme Campanario Rodriguês">Guilherme</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/igor/?modo=diretorio" title="Igor Marques">Igor</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/jb/?modo=diretorio" title="João Batista Nascimento">JB</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/joaogomes/?modo=diretorio" title="João Carlos da Costa Gomes">João Gomes</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/joaoluiz/?modo=diretorio" title="João Luiz Antunes da Costa">João Luiz</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/ze/?modo=diretorio" title="José Roberto Ramos Calisto">José Roberto</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/josue/?modo=diretorio" title="Josué de Souza Silveira">Josue</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/luisotavio/?modo=diretorio" title="Luís Otávio Lopes Remedy">Luís Otávio</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/oliveira/?modo=diretorio" title="Ademilson Oliveira da Silva">Oliveira</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/paulo/?modo=diretorio" title="Paulo Cezar Da Matta">Paulo</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                                <li >
+                                    <a href="/renato/?modo=diretorio" title="Renato Rocha Matos Junior">Renato</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/roberto/?modo=diretorio" title="José Roberto da Silva Farias">Roberto</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/rogerio/?modo=diretorio" title="Rogério Ferrari N. Pereira">Rogério</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/samuel/?modo=diretorio" title="Samuel da Silva Valles">Samuel</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/totonho/?modo=diretorio" title="José Antônio Alegre da Silva">Totonho</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/valter/?modo=diretorio" title="Valter Luiz de Souza">Valter</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/vicente/?modo=diretorio" title="Vicente Armando Berti">Vicente</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/zepedro/?modo=diretorio" title="José Pedro da Silva">Zé Pedro</a>
+                                </li>
+                                
+                            
+                        </ul>
+                        <div id="apoio-rodape" class="menu-rodape coluna col-tres-setimo ultimo-linha ultimo">
+                            
+                            <h3><a href="/apoio/?modo=diretorio">Apoio</a></h3>
+                            
+                            <img src="/media/style/images/apoio/logo_astab.png">
+
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="credito">
+                    <div class="separador-horizontal"></div>
+                    <div id="aw-logo">
+                        <span class="direitos">Búzios Táxi - Todos os direitos reservados</span>
+                        <br />
+                        <a href="http://www.amazingworks.com.br" target="_blank" title="Desenvolvido por AmazingWorks">
+                            <img src="/media/style/images/aw_logo.png" alt="AmazingWorks" />
+                        </a>
+                    </div>
+                </div>
+			</div>
+		</div>
+
+        <div id="mensagens"></div>
+
+		<!-- sugestões -->
+		<script type="text/javascript">
+			var uservoiceOptions = {
+			  /* required */
+			  key: 'buziostaxi',
+			  host: 'buziostaxi.uservoice.com',
+			  forum: '50787',
+			  showTab: true,
+			  /* optional */
+			  alignment: 'left',
+			  background_color:'#455a6b',
+			  text_color: 'white',
+			  hover_color: '#697e8f',
+			  lang: 'pt_BR'
+			};
+
+			function _loadUserVoice() {
+			  var s = document.createElement('script');
+			  s.setAttribute('type', 'text/javascript');
+			  s.setAttribute('src', ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js");
+			  document.getElementsByTagName('head')[0].appendChild(s);
+			}
+			_loadSuper = window.onload;
+			window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
+		</script>
+		<!-- fim sugestões -->
+		<!-- analitycs -->
+		    <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-17199816-1']);
+                _gaq.push(['_trackPageview']);
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+           </script>
+        <!-- fim analitycs -->
+		<script type="text/javascript">
+			var js = document.createElement('script');
+			js.scr = 'http://imasters.uol.com.br/crossbrowser/fonte.js';
+			var h = document.getElementsByTagName('head')[0];
+			h.appendChild(js);
+		</script>
+    </body>
+</html>

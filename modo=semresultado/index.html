@@ -1,0 +1,779 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="pt" lang="pt">
+    <head>
+        <title>Búzios Táxi
+    
+</title>
+        <link rel="search" href="http://media.buziostaxi.com.br/opensearch.xml" type="application/opensearchdescription+xml" title="Busca Búzios Táxi" />
+        <link rel="shortcut icon" href="http://media.buziostaxi.com.br/style/images/favicon.ico">
+        <meta name="description" content="Búzios Táxi - Precisando de táxi, transfer ou city tour? Chega de esperar, chega de procurar, encontre um carro ao seu gosto agora mesmo.">
+        <meta name="keywords" content="Búzios, táxi, taxista, catálogo, transporte, transfer, City Tour, passeio">
+        <link rel="stylesheet" href="http://media.buziostaxi.com.br/style/original/css/style.css" type="text/css">
+
+        
+        
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+        <script src="http://imasters.uol.com.br/crossbrowser/fonte.js" type="text/javascript"></script>
+        
+
+        <script src="http://media.buziostaxi.com.br/style/js/jquery.qtip-1.0.0-rc3.min.js" type="text/javascript"></script>
+        <script src="http://media.buziostaxi.com.br/style/js/aw_ini.js" type="text/javascript"></script>
+        <script src="http://media.buziostaxi.com.br/style/js/jquery.autocomplete.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+
+            function carregarMensagens() {
+                $("#mensagens").load('/carregarMensagensAviso/', function(response, status, xhr) {
+                    if (status == "error") {
+                        $(this).html("Erro ao carregar suas mensagens.");
+                    }
+                    exibirMensagem();
+                });
+            }
+            function exibirMensagem() {
+                var $alert = $('#mensagens');
+                if($('#mensagens > ul > li').length)
+                {
+                    var alerttimer = window.setTimeout(function () {
+                        $alert.trigger('click');
+                    }, 4500);
+                    $alert.animate({height: $alert.css('line-height') || '80px'}, 250)
+                    .click(function () {
+                        window.clearTimeout(alerttimer);
+                        $alert.animate({height: '0'}, 250);
+                        window.setTimeout()
+                    });
+                }
+            }
+            $(document).ready(function() {
+                $("body").css({"background-color": "#1F354A"});
+                $('.icones-funcoes li').qtip({
+                    position: {corner: {target: 'topMiddle', tooltip: 'bottomMiddle'}, adjust: {y: -4}},
+                    show: { effect: { length: 20 } },
+                    hide: { effect: { length: 100 } },
+                    style: 'padrao'
+                })
+
+                $(".campo-pesquisa").autocomplete("/autocomplete/", {
+                    width: 254,
+                    max: 6,
+                    minChars:1,
+                    scroll: false,
+                    selectFirst: false,
+                    //scrollHeight: 300,
+                    formatItem: function(data, i, n, value) { // formatar o dado vindo do servidor para ser exibido
+                        return value.split('#')[0]
+                    },
+		            formatResult: function(data, value) { // o que aparece dp do clique
+            			return value.split("#")[1];
+		            }
+                }).result(function(event, item) { // para onde ele vai quando clica
+                    location.href = item[0].split('#')[1];
+                });
+
+                exibirMensagem();
+            });
+            //estilo padrao ToolTip
+            $.fn.qtip.styles.padrao = {
+                paddingTop: 0,
+                paddingRight: 5,
+                paddingBottom: 0,
+                paddingLeft: 5,
+                background: '#133047',
+                color: '#ffffff',
+                textAlign: 'center',
+                fontSize: '0.7em',
+                border: {width: 0, radius: 3, color: '#133047'},
+                tip: {corner: 'bottomMiddle', size: {x:8,y:3}}
+            }
+
+        </script>
+
+        
+
+<script src="http://media.buziostaxi.com.br/style/js/jquery.carouFredSel-2.4.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+         
+        //Carrossel Display
+        $("#display-principal .itens").carouFredSel({
+            items: 1,
+            scroll: {
+                pauseOnHover: true
+            },
+            auto: 6000,
+            pagination: {
+                container: "#display-principal .paginacao-simples",
+                keys: true,
+                anchorBuilder: function( nr ) {
+                    return '<a class="icone item-paginacao-point" href="#'+nr+'"></a>';
+                }
+            }
+        });
+        
+
+        //Carrossel Destaques
+        $('#carrossel .itens').carouFredSel({
+            items: 3,
+            next : {
+                button		: $('#destaque .proximo'),
+                key			: 'right'
+            },
+            prev : {
+                button		: $('#destaque .anterior'),
+                key			: 'left'
+            },
+            scroll : {
+                items:  1,
+                duration: 250,
+                pauseOnHover	: true
+            },
+            auto: 4000
+        });
+    });
+    
+</script>
+
+
+        
+
+        
+         <!--[if IE]>
+                <script src="http://media.buziostaxi.com.br/style/js/jquery.adeus.ie6.min.js" type="text/javascript"></script>
+                <link type="text/css" href="http://media.buziostaxi.com.br/style/original/css/style_ie.css" rel="stylesheet"/>
+                <script src="http://media.buziostaxi.com.br/style/original/js/jquery.corner.js" type="text/javascript"></script>
+                <script src="http://media.buziostaxi.com.br/style/js/aw_ini_ie.js" type="text/javascript"></script>
+				
+			<script type="text/javascript">
+                    $(document).ready(function(){
+                        $("#idioma > input[type='image']").click(function(){
+                            $('<input />').attr('type', 'hidden')
+                                .attr('name', 'language')
+                                .attr('value', $(this).attr('value'))
+                                .appendTo('#idioma');
+                            return true;
+                        });
+                    });
+                </script>	
+				
+            <![endif]-->
+        
+    </head>
+    <body id="home">
+        <div id="pagina">
+			<div id="cabecalho">
+				<div id="cabecalho-interno">
+					<div id="logotipo">
+						<h1>
+							<a href="/?modo=logo" title="Ir para página inicial"><img src="http://media.buziostaxi.com.br/style/images/logotipo.png" alt="Búzios Táxi" title="Ir para página inicial" /></a>
+							<img style="display: none;" src="http://media.buziostaxi.com.br/style/images/avatar_logo.jpg" alt="Búzios Táxi" title="Búzios Táxi" />
+						</h1>
+					</div>
+					<ul id="menu-principal">
+						<li><a href="/taxistas/?modo=superior">Taxistas</a></li>
+						<li><a href="/pontos/?modo=superior">Pontos de Táxi</a></li>
+                        
+                        <li><a href="/info/servicos/?modo=superior">Serviços</a></li>
+						<li><a href="/tarifario/?modo=superior">Tarifário</a></li>
+                        <li><a href="/agenda/?modo=superior">Agenda</a></li>
+                        <li><a href="/apoio/?modo=superior">Apoios</a></li>
+                        <li><a href="/blog/?modo=superior">Blog</a></li>
+					</ul>
+                    <div id="migalha">
+                        
+                    </div>
+                    <div id="idiomas">
+                        
+                        <form action="/i18n/setlang/" method="post">
+                            
+                            <input name="next" type="hidden" value="/" />
+                            
+                            
+                                <input type="image" name="language" src="http://media.buziostaxi.com.br/style/images/bandeiras/us.gif" value="en" title="English" />
+                            
+                            
+                                <input type="image" name="language" src="http://media.buziostaxi.com.br/style/images/bandeiras/ar.gif" value="es" title="Español" />
+                            
+                        </form>
+                        
+                    </div>
+					<div id="form-pesquisa">
+						<form id="form-pesquisa-interno" action="/pesquisa/">
+							<input type="text" name="q" title="Pesquisar taxista" class="campo-pesquisa" value="" autocomplete="off" />
+							<input type="submit" class="bt-submit-pesquisa icone i-lupa" title="Pesquisar" value="Pesquisar"/>
+                        </form>
+                        <script type="text/javascript">
+                            $("#form-pesquisa-interno .campo-pesquisa").defaultvalue("Pesquisar taxista");
+                        </script>
+					</div>
+				</div>
+			</div>
+			<div id="corpo">
+				<div id="corpo-interno">
+					
+    <div id="principal" class="duas-colunas">
+        <div id="recipiente">
+            <div id="conteudo">
+                <div id="display-principal" class="modulo">
+                    <div class="moldura-display">
+                        <ul class="itens">
+                        
+                            <li>
+                                <a href="http://www.buziostaxi.com.br/">
+                                    <div class="info-display esquerda-display claro-display">
+                                        <h3>Melhores Carros</h3><p>Segurança e conforto para sua família.</p>
+                                    </div>
+                                    <img src="http://media.buziostaxi.com.br/destaque/display.jpg.676x300_q85_crop-smart.jpg" title="Melhores CarrosSegurança e conforto para sua família." />
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="http://www.buziostaxi.com.br/taxistas/?servico=2|Transfer&amp;modo=display">
+                                    <div class="info-display esquerda-display claro-display">
+                                        <h3>Transfers</h3><p>Faça viagens com segurança e conforto.</p>
+                                    </div>
+                                    <img src="http://media.buziostaxi.com.br/destaque/transfer.jpg.676x300_q85_crop-smart.jpg" title="TransfersFaça viagens com segurança e conforto." />
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="http://www.buziostaxi.com.br/taxistas/?servico=3|CityTour?modo=display">
+                                    <div class="info-display esquerda-display claro-display">
+                                        <h3>City-Tour</h3><p>Conheça os principais pontos turísticos da cidade</p>
+                                    </div>
+                                    <img src="http://media.buziostaxi.com.br/destaque/city-tour.jpg.676x300_q85_crop-smart.jpg" title="City-TourConheça os principais pontos turísticos da cidade" />
+                                </a>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    
+                        <div class="paginacao-simples"></div>
+                    
+                </div>
+                <div class="coluna col-dois-terco">
+                    <div class="modulo" id="blog">
+                        <div class="topo">
+                            <h3 class="titulo"><a href="/blog/" title="Ir para o Blog">Blog</a></h3>
+                        </div>
+                        
+                        
+                            <div class="item-vertical ">
+                                
+                                <div class="moldura-miniatura">
+                                    <a href="/blog/2011/01/14/sos-regiao-serrana/?modo=home" class="miniatura-m miniatura-fixa">
+                                        <img src="http://media.buziostaxi.com.br/blog/thumb/image001.png.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="S.O.S. Região Serrana ">
+                                    </a>
+                                </div>
+                                
+                                <h4><a href="/blog/2011/01/14/sos-regiao-serrana/">S.O.S. Região Serrana </a></h4>
+                                <p>Vamos Ajudar, Traga seu donativo! Até 6º Feira, dia 21 de Janeiro Mantimentos: Material de higiene, leite, água, açúcar, biscoitos e etc. Usados: Roupas, calçados, ...</p>
+                            </div>
+                        
+                            <div class="item-vertical ">
+                                
+                                <div class="moldura-miniatura">
+                                    <a href="/blog/2010/11/10/taxistas-estao-isentos-do-pagamento-de-icms-ate-20/?modo=home" class="miniatura-m miniatura-fixa">
+                                        <img src="http://media.buziostaxi.com.br/blog/thumb/icms.jpg.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="Taxistas estão isentos do pagamento de ICMS até 2014">
+                                    </a>
+                                </div>
+                                
+                                <h4><a href="/blog/2010/11/10/taxistas-estao-isentos-do-pagamento-de-icms-ate-20/">Taxistas estão isentos do pagamento de ICMS até 2014</a></h4>
+                                <p>Para os taxistas, está lei não é nenhuma novidade, pois o isenção do ICMS é sempre renovada já a algum tempo. O que os taxistas ...</p>
+                            </div>
+                        
+                            <div class="item-vertical ultimo">
+                                
+                                <div class="moldura-miniatura">
+                                    <a href="/blog/2010/10/15/taxistas-apresentam-site-para-o-prefeito-mirinho-b/?modo=home" class="miniatura-m miniatura-fixa">
+                                        <img src="http://media.buziostaxi.com.br/blog/thumb/mirinho1.jpg.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="Taxistas apresentam site para o Prefeito Mirinho Braga">
+                                    </a>
+                                </div>
+                                
+                                <h4><a href="/blog/2010/10/15/taxistas-apresentam-site-para-o-prefeito-mirinho-b/">Taxistas apresentam site para o Prefeito Mirinho Braga</a></h4>
+                                <p>O site do BúziosTáxi foi apresentado ao prefeito Mirinho Braga e ao seu secretário de turismo Isac Tillinger. A reunião foi um sucesso e todos ...</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                <div class="coluna col-um-terco ultimo">
+                    <div class="modulo" id="pontos">
+                        <div class="topo">
+                            <h3 class="titulo"><a href="/pontos/" title="Ir para página de pontos">Pontos de Táxi</a></h3>
+                        </div>
+                        
+                        <div class="item-vertical ">
+                            <h4><a href="/ponto-mcdonalds/">McDonald&#39;s</a></h4>
+                            <p>
+                                <small>(22) 2623-2703 | 22 taxistas</small>
+                                <br />
+                                Próximo ao Shopping Nº 1
+                            </p>
+                        </div>
+                        
+                        <div class="item-vertical ">
+                            <h4><a href="/ponto-rodoviaria/">Rodoviária</a></h4>
+                            <p>
+                                <small>(22) 2623-6618 | 7 taxistas</small>
+                                <br />
+                                Próximo ao Celso Terra
+                            </p>
+                        </div>
+                        
+                        <div class="item-vertical ultimo">
+                            <h4><a href="/ponto-praca/">Praça</a></h4>
+                            <p>
+                                <small>(22) 2623-2160 | 2 taxistas</small>
+                                <br />
+                                Praça Santos Dumont
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div id="destaque" class="modulo">
+                    <div class="topo">
+                        <div class="paginacao-simples fl-r">
+                            
+                            <a class="anterior icone i-ant" title="Anterior">Anterior</a>
+                            <a class="proximo icone i-pro" title="Próximo">Próximo</a>
+                            
+                        </div>
+                        <h3 class="titulo"><a href="/taxistas/?modo=vertodos" title="Ver todos os taxistas cadastrados">Destaque</a></h3>
+                    </div>
+                    <div id="carrossel" class="conteudo-interno">
+                        <ul class="itens">
+                            
+                            <li class="item">
+                                <div class="moldura-miniatura">
+                                    <a href="/josue/?modo=destaque" class="miniatura-m miniatura-fixa">
+                                        <img src="http://media.buziostaxi.com.br/taxistaperfil/josue_1.jpg.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="Josué de Souza Silveira">
+                                    </a>
+                                </div>
+                                <div class="informacao">
+                                    <p class="sub-info"><a href="/josue/?modo=destaque" title="Josué de Souza Silveira" class="nome"><b>Josue</b></a></p>
+                                    <p class="sub-info">(22) 9268-7156</p>
+                                    <p class="sub-info"><small>Corsa Sedan - Premium</small></p>
+                                </div>
+                            </li>
+                            
+                            <li class="item">
+                                <div class="moldura-miniatura">
+                                    <a href="/celestino/?modo=destaque" class="miniatura-m miniatura-fixa">
+                                        <img src="http://media.buziostaxi.com.br/taxistaperfil/celestino.JPG.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="Celestino Bertti">
+                                    </a>
+                                </div>
+                                <div class="informacao">
+                                    <p class="sub-info"><a href="/celestino/?modo=destaque" title="Celestino Bertti" class="nome"><b>Celestino</b></a></p>
+                                    <p class="sub-info">(22) 9252-4443</p>
+                                    <p class="sub-info"><small>Meriva - Premium</small></p>
+                                </div>
+                            </li>
+                            
+                            <li class="item">
+                                <div class="moldura-miniatura">
+                                    <a href="/carlindo/?modo=destaque" class="miniatura-m miniatura-fixa">
+                                        <img src="http://media.buziostaxi.com.br/taxistaperfil/carlindo.jpg.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="Carlindo Chaves de Souza">
+                                    </a>
+                                </div>
+                                <div class="informacao">
+                                    <p class="sub-info"><a href="/carlindo/?modo=destaque" title="Carlindo Chaves de Souza" class="nome"><b>Carlindo</b></a></p>
+                                    <p class="sub-info">(22) 9901-3136</p>
+                                    <p class="sub-info"><small>Meriva - Maxx</small></p>
+                                </div>
+                            </li>
+                            
+                            <li class="item">
+                                <div class="moldura-miniatura">
+                                    <a href="/samuel/?modo=destaque" class="miniatura-m miniatura-fixa">
+                                        <img src="http://media.buziostaxi.com.br/taxistaperfil/samuel.jpg.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="Samuel da Silva Valles">
+                                    </a>
+                                </div>
+                                <div class="informacao">
+                                    <p class="sub-info"><a href="/samuel/?modo=destaque" title="Samuel da Silva Valles" class="nome"><b>Samuel</b></a></p>
+                                    <p class="sub-info">(22) 9901-2922</p>
+                                    <p class="sub-info"><small>Zafira - Comfort</small></p>
+                                </div>
+                            </li>
+                            
+                            <li class="item">
+                                <div class="moldura-miniatura">
+                                    <a href="/ze/?modo=destaque" class="miniatura-m miniatura-fixa">
+                                        <img src="http://media.buziostaxi.com.br/taxistaperfil/ze_1.jpg.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="José Roberto">
+                                    </a>
+                                </div>
+                                <div class="informacao">
+                                    <p class="sub-info"><a href="/ze/?modo=destaque" title="José Roberto" class="nome"><b>José Roberto</b></a></p>
+                                    <p class="sub-info">(22) 9846-0067</p>
+                                    <p class="sub-info"><small>Palio - Fire 16v</small></p>
+                                </div>
+                            </li>
+                            
+                            <li class="item">
+                                <div class="moldura-miniatura">
+                                    <a href="/joaogomes/?modo=destaque" class="miniatura-m miniatura-fixa">
+                                        <img src="http://media.buziostaxi.com.br/taxistaperfil/joaogomes.jpg.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="João Carlos da Costa Gomes">
+                                    </a>
+                                </div>
+                                <div class="informacao">
+                                    <p class="sub-info"><a href="/joaogomes/?modo=destaque" title="João Carlos da Costa Gomes" class="nome"><b>João Gomes</b></a></p>
+                                    <p class="sub-info">(22) 9902-1793</p>
+                                    <p class="sub-info"><small>Meriva - Premium</small></p>
+                                </div>
+                            </li>
+                            
+                            <li class="item">
+                                <div class="moldura-miniatura">
+                                    <a href="/tiao/?modo=destaque" class="miniatura-m miniatura-fixa">
+                                        <img src="http://media.buziostaxi.com.br/taxistaperfil/tiao.jpg.80x80_q85_crop-smart.jpg"  width="80" height="80" alt="Sebastião Rodrigues">
+                                    </a>
+                                </div>
+                                <div class="informacao">
+                                    <p class="sub-info"><a href="/tiao/?modo=destaque" title="Sebastião Rodrigues" class="nome"><b>Tião</b></a></p>
+                                    <p class="sub-info">(22) 9926-1059</p>
+                                    <p class="sub-info"><small>Meriva - Maxx</small></p>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="conteudo-secundario" class=" estilo-padrao-laterais ">
+            
+            <div class="modulo">
+                <h3 class="titulo fixo">
+                    <a href="http://www.facebook.com/pages/Armacao-Dos-Buzios-Brazil/Buzios-Taxi/116831275032723" target="_blank">Facebook</a>
+                    <span class="icone i-seta-direita"></span>
+                </h3>
+                <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+                <script type="text/javascript">FB.init("a9e9d5121d5893522614d48426cbafe7");</script>
+                <fb:fan profile_id="116831275032723" connections="8" width="250" height="230" css="http://media.buziostaxi.com.br/style/css/facebook.css?4"></fb:fan>
+            </div>
+            <div  class="modulo">
+                <h3 class="titulo fixo">
+                    <a href="http://twitter.com/buziostaxi/" target="_blank">Twitter</a>
+                    <span class="icone i-seta-direita"></span>
+                </h3>
+                <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+                <script>
+                new TWTR.Widget({
+                  version: 2,
+                  type: 'profile',
+                  rpp: 6,
+                  interval: 6000,
+                  width: 'auto',
+                  height: 'auto',
+                  theme: {shell: {background: 'transparent', color: '#455a6b'},tweets: {background: 'transparent', color: '#808080', links: '#455a6b'}},
+                  features: {scrollbar: false, loop: true, live: false, hashtags: true, timestamp: true, avatars: false, behavior: 'default'}
+                }).render().setUser('buziostaxi').start();
+                </script>
+            </div>
+        </div>
+    </div>
+
+					<div class="clear"></div>
+				</div>
+            </div>
+			<div id="rodape">
+                <div class="diretorio">
+                    <div id="rodape-interno">
+                        <div class="coluna col-um-setimo ultimo-linha">
+                            <ul class="menu-rodape ">
+                                <h3><a href="/?modo=diretorio">Búzios Táxi</a></h3>
+                                
+                                
+                                    
+                                        <li ><a href="/info/cadastre-seu-taxi/?modo=diretorio">Cadastre seu Taxi</a></li>
+                                    
+                                        <li ><a href="/info/anuncie-aqui/?modo=diretorio">Anuncie Aqui</a></li>
+                                    
+                                        <li ><a href="/info/sugestoes/?modo=diretorio">Sugestões</a></li>
+                                    
+                                        <li class="ultimo-linha"><a href="/info/servicos/?modo=diretorio">Serviços</a></li>
+                                    
+                            </ul>
+                            <ul class="menu-rodape ultimo-linha ultimo-linha">
+                                <h3><a href="/pontos/?modo=diretorio">Pontos</a></h3>
+                                
+                                    <li >
+                                        <a href="/ponto-geriba/?modo=diretorio">Geribá</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-mcdonalds/?modo=diretorio">McDonald&#39;s</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-praca/?modo=diretorio">Praça</a>
+                                    </li>
+                                
+                                    <li >
+                                        <a href="/ponto-rodoviaria/?modo=diretorio">Rodoviária</a>
+                                    </li>
+                                
+                            </ul>
+                        </div>
+                        <ul class="menu-rodape coluna col-um-setimo ultimo-linha">
+                            <h3><a href="/taxistas/?modo=diretorio">Taxistas</a></h3>
+                            
+                                <li >
+                                    <a href="/alexandro/?modo=diretorio" title="Alexandro Linhares Coutinho">Alexandro</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/arthur/?modo=diretorio" title="Arthur Valles">Arthur</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/beto/?modo=diretorio" title="Alberto Santos Silva">Beto</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/cacau/?modo=diretorio" title="José Carlos da Silva Moreira">Cacau</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/carlindo/?modo=diretorio" title="Carlindo Chaves de Souza">Carlindo</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/carlos/?modo=diretorio" title="Antônio Carlos Ferreira">Carlos</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/celestino/?modo=diretorio" title="Celestino Bertti">Celestino</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/damatta/?modo=diretorio" title="Marcos Antonio Da Matta">Damatta</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/deivison/?modo=diretorio" title="Deivison Moraes Valadão">Deivison</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/dilan/?modo=diretorio" title="Dilan Silva Pereira">Dilan</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                                <li >
+                                    <a href="/igor/?modo=diretorio" title="Igor Marques">Igor</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/jb/?modo=diretorio" title="João Batista Nascimento">JB</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/joaogomes/?modo=diretorio" title="João Carlos da Costa Gomes">João Gomes</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/joaoluiz/?modo=diretorio" title="João Luiz Antunes da Costa">João Luiz</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/ze/?modo=diretorio" title="José Roberto">José Roberto</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/josue/?modo=diretorio" title="Josué de Souza Silveira">Josue</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/juca/?modo=diretorio" title="Fabiano Alves da Costa">Juca</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/maicon/?modo=diretorio" title="Maicon Carvalho dos Santos">Maicon</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/marcelo/?modo=diretorio" title="Marcelo Jesuino">Marcelo</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/oliveira/?modo=diretorio" title="Ademilson Oliveira da Silva">Oliveira</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                                <li >
+                                    <a href="/paulo/?modo=diretorio" title="Paulo Da Matta">Paulo</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/pepa/?modo=diretorio" title="Fabio Alvez da Costa">Pepa</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/rogerio/?modo=diretorio" title="Rogério Ferrari N. Pereira">Rogério</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/samuel/?modo=diretorio" title="Samuel da Silva Valles">Samuel</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/tiao/?modo=diretorio" title="Sebastião Rodrigues">Tião</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/ton/?modo=diretorio" title="Everton Fernandes Moreira">Ton</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/totonho/?modo=diretorio" title="José Antônio Alegre da Silva">Totonho</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/vicente/?modo=diretorio" title="Vicente Armando Berti">Vicente</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/wagner/?modo=diretorio" title="Wagner Cardoso Vieira">Wagner</a>
+                                </li>
+                                
+                            
+                                <li >
+                                    <a href="/zepedro/?modo=diretorio" title="José Pedro da Silva">Zé Pedro</a>
+                                </li>
+                                
+                                    </ul>
+                                    <ul class="menu-rodape coluna col-um-setimo no-title ultimo-linha">
+                                
+                            
+                        </ul>
+                        <div id="apoio-rodape" class="menu-rodape coluna col-tres-setimo ultimo-linha ultimo">
+                            <!-- Include the Google Friend Connect javascript library. -->
+                            <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
+                            <!-- Define the div tag where the gadget will be inserted. -->
+                            <div id="div-547471936499663863" style="width:100%;border:0 none;"></div>
+                            <!-- Render the gadget into a div. -->
+                            <script type="text/javascript">
+                            var skin = {};
+                            skin['FONT_FAMILY'] = 'verdana,sans-serif';
+                            skin['BORDER_COLOR'] = '#354C5C';
+                            skin['ENDCAP_BG_COLOR'] = '#354C5C';
+                            skin['ENDCAP_TEXT_COLOR'] = '#f3f3f3';
+                            skin['ENDCAP_LINK_COLOR'] = '#f3f3f3';
+                            skin['ALTERNATE_BG_COLOR'] = '#ffffff';
+                            skin['CONTENT_BG_COLOR'] = '#354C5C';
+                            skin['CONTENT_LINK_COLOR'] = '#FFFFFF';
+                            skin['CONTENT_TEXT_COLOR'] = '#f3f3f3';
+                            skin['CONTENT_SECONDARY_LINK_COLOR'] = '#eeeeee';
+                            skin['CONTENT_SECONDARY_TEXT_COLOR'] = '#f3f3f3';
+                            skin['CONTENT_HEADLINE_COLOR'] = '#ffffff';
+                            google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
+                            google.friendconnect.container.renderOpenSocialGadget(
+                             { id: 'div-547471936499663863',
+                               url:'http://www.google.com/friendconnect/gadgets/newsletterSubscribe.xml',
+                               site: '11575984576110282355',
+                               'view-params':{}
+                            ,
+                               'prefs':{"newsletterHeadlineText":"NEWSLETTER","newsletterStandardText":"Receba nossas novidades por email."}
+                             },
+                              skin);
+                            </script>
+                            <div class="divisao"></div>
+                            <h3><a href="/apoio/?modo=diretorio">Apoio</a></h3>
+                            <img src="http://media.buziostaxi.com.br/style/images/apoio/logo_prefeitura_de_buzios.png">
+                            <img src="http://media.buziostaxi.com.br/style/images/apoio/brasao_prefeitura_de_buzios.png">
+                            <img src="http://media.buziostaxi.com.br/style/images/apoio/logo_astab.png">
+
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="credito">
+                    <div class="separador-horizontal"></div>
+                    <div id="aw-logo">
+                        <span class="direitos">Búzios Táxi - Todos os direitos reservados</span>
+                        <br />
+                        <a href="http://www.amazingworks.com.br" target="_blank" title="Desenvolvido por AmazingWorks">
+                            <img src="http://media.buziostaxi.com.br/style/images/aw_logo.png" alt="AmazingWorks" />
+                        </a>
+                    </div>
+                </div>
+			</div>
+		</div>
+
+        <div id="mensagens"></div>
+
+		<!-- sugestões -->
+		<script type="text/javascript">
+			var uservoiceOptions = {
+			  /* required */
+			  key: 'buziostaxi',
+			  host: 'buziostaxi.uservoice.com',
+			  forum: '50787',
+			  showTab: true,
+			  /* optional */
+			  alignment: 'left',
+			  background_color:'#455a6b',
+			  text_color: 'white',
+			  hover_color: '#697e8f',
+			  lang: 'pt_BR'
+			};
+
+			function _loadUserVoice() {
+			  var s = document.createElement('script');
+			  s.setAttribute('type', 'text/javascript');
+			  s.setAttribute('src', ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js");
+			  document.getElementsByTagName('head')[0].appendChild(s);
+			}
+			_loadSuper = window.onload;
+			window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
+		</script>
+		<!-- fim sugestões -->
+		<!-- analitycs -->
+		    <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-17199816-1']);
+                _gaq.push(['_trackPageview']);
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+           </script>
+        <!-- fim analitycs -->
+    </body>
+</html>
